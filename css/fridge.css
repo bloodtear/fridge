@@ -1,0 +1,131 @@
+.main-wrapper {
+    !height: 1920px;
+    !width: 1080px;
+}
+
+.header-wrapper {
+    padding: 15px;
+    border:0px solid black;
+    height: 560px;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(#233041), to(#324968));
+}
+
+.left-header {
+    float: left;
+    color: #AEC6E0;
+    font-size:2em;
+}
+
+.right-header {
+    float: right;
+    color: #AEC6E0;;
+    
+}
+
+.datetime, .chs-title, .eng-title{
+    color: white;
+}
+.chs-title{
+    font-size: 1.4em;
+}
+.datetime {
+    font-size: 1.4em;
+    padding: 15px;
+}
+.time {
+    float: right;
+}
+
+.temperature > div {
+    display: inline-block;
+}
+
+.datetime > div {
+    display: inline-block;
+}
+
+.hello_word {
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(#1D2434), to(#212E3E));
+    height: 60px;
+    line-height: 60px;
+    font-size: 2em;
+    padding-left: 30px;
+    color: #AEC6E0;
+}
+
+.humidity, .wind {
+    font-size: 1.4em;
+}
+
+.box{
+  display: -webkit-flex; /* Safari */
+  display: flex;
+}
+.item {
+  flex-grow: 1; /* default 0 */
+}
+
+.true_main_div {
+    min-height: 700px;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(#273C4F), to(#283848));
+}
+.choose_fridge_and_foodtype {
+    color: #AEC6E0;
+    font-size: 1.4em;   
+    padding: 30px;
+}
+.food_list {
+    font-size: 1.4em;   
+    color: #AEC6E0;
+}
+.food_item {
+    height: 110px;
+    border: white 1px solid;
+    display: inline-flex;
+    width: 33%;
+}
+.choose_fridge_and_foodtype > div ,.food_type_list > div {
+    display: inline-block;
+}
+
+.food_type_list {
+    float: right;
+    cursor: pointer;
+}
+.food_type_list > div {
+    width: 120px;
+    padding: 5px;
+    border: 2px solid #AEC6E0;
+    border-radius: 30px;
+}
+
+.menu_list {
+    height: 60px;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(#2B3946), to(#334456));
+    color: #AEC6E0;
+    line-height: 60px;
+    font-size: 2em;
+    padding-left: 30px;
+    color: #AEC6E0;
+    cursor: pointer;
+}
+
+.menu_list_click, .food_type_choose {
+    color: white;
+}
+.food_type_choose {
+    border: 2px solid white;
+}
+.middle-menu > div  {
+    display: inline-block;
+}
+
+.food_detail {
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 999;
+    width: 400px;
+    height: 400px;
+    background-color: white;
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
+
+        <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css" type="text/css">
+        <!--<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">-->
+        <link rel="stylesheet" href="css/fridge.css">
+        <link rel="stylesheet" href="vendor/jquery-ui-1.12.1/jquery-ui.min.css">
+        <link rel="stylesheet" href="vendor/jquery-ui-1.12.1/jquery-ui.theme.min.css">
+        <link rel="stylesheet" href="vendor/jquery-ui-1.12.1/jquery-ui.structure.min.css">
+        
+        <script src="vendor/jquery/jquery-2.1.1.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+        <!--<script src="vendor/metisMenu/metisMenu.min.js"></script>-->
+        <script src="vendor/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+        
+        <script src="vendor/vue/vue.js"></script>
+        
+        <script src="js/fridge.js"></script>
+
+        <title> 冰箱 </title>
+    </head>
+<body>
+    <div class="main-wrapper">
+
+    <div class='header-wrapper'>
+        <div class='left-header'>
+            <div class='chs-title'>智慧家庭</div>
+            <div class='eng-title'>Smart Home</div>
+            <div class='temperature'>
+                <div class='refrigerator'>
+                    <div class='num'>-5℃</div>
+                    <div class='title'>冷藏室</div>
+                </div>
+                <div class='freezer'>
+                    <div class='num'>-35℃</div>
+                    <div class='title'>冷冻室</div>
+                </div>
+            </div>
+            <div class='header-icon-list'>
+                <img src='images/icon.png'/>
+                <img src='images/icon.png'/>
+                <img src='images/icon.png'/>
+                <img src='images/icon.png'/>
+            </div>
+            
+            
+            
+            
+            
+        </div>
+        
+        <div class='right-header'>
+            <div class='datetime'>
+                <div class='date'>
+                    {{now_date}}
+                </div>
+                <div class='time'>
+                    {{now_time}}
+                </div>
+            </div>
+            <div class='weather'>
+                <img src='images/sun.png'/>
+            </div>
+            <div class='humidity'>
+                <img src='images/shidu.png'/><span>室外湿度：</span><span>48%</span>
+            </div>
+            <div class='wind'>
+                <img src='images/shidu.png'/><span>东南风：</span><span>4 级</span>
+            </div>
+        
+        </div>
+    </div>
+    
+    
+    <div class='hello_word'>
+        HI， 早上好，美好的早餐会让您活力充沛一整天
+    </div>
+    
+    
+<div class='true_main_div'>
+
+
+    <div class='menu_list box'>
+        <div class='item text-center menu_btn' v-on:click="change_main_flag" v-bind:main_flag='0' v-bind:class="{menu_list_click: main_flag == 0}">食材管理</div>
+        <div class='item text-center menu_btn' v-on:click="change_main_flag" v-bind:main_flag='1' v-bind:class="{menu_list_click: main_flag == 1}">在线生鲜</div>
+        <div class='item text-center menu_btn' v-on:click="change_main_flag" v-bind:main_flag='2' v-bind:class="{menu_list_click: main_flag == 2}">食谱推送</div>
+    </div>
+    
+    <div class='true_main_div_body'>
+    
+        <div v-if="main_flag == 0" class=''>
+            <div class='choose_fridge_and_foodtype'>
+                <div class='fridge-show'>
+                    <img src='images/circle.png'/><span>冷藏室</span>
+                </div>
+                <div class='food_type_list'>
+                    <div class='text-center' v-on:click="change_food_type" v-bind:food_type='0' v-bind:class="{food_type_choose: food_type == 0}">蔬菜</div>
+                    <div class='text-center' v-on:click="change_food_type" v-bind:food_type='1' v-bind:class="{food_type_choose: food_type == 1}">水果</div>
+                    <div class='text-center' v-on:click="change_food_type" v-bind:food_type='2' v-bind:class="{food_type_choose: food_type == 2}">肉类</div>
+                </div>
+            </div>
+            <div class='food_list'>
+                <div class='food_item' v-for="food in food_list[food_type]" v-on:click="view_food" v-bind:food_id="food.id">
+                    <img v-bind:src="food.icon_src"/>
+                    <div>{{food.name}}</div>
+                </div>
+            </div>
+            <div v-if="food_view == true" class='view_food'>
+                <div class='food_detail'>
+                    <img v-bind:src="food_list[food_type][food_id].icon_src"/>
+                    <div>{{food_list[food_type][food_id].name}}</div>
+                    <div class='btn btn-default close_view_btn' v-on:click="close_view_food">确定</div>
+                </div>
+            </div>
+        </div>
+
+        <div v-else-if="main_flag == 1" class=''>
+                <div class='fridge-show'>
+                    <img src='images/circle.png'/><span>1</span>
+                </div>
+            
+        
+        </div>
+
+        <div v-else-if="main_flag == 2" class=''>
+                <div class='fridge-show'>
+                    <img src='images/circle.png'/><span>2</span>
+                </div>
+            
+        
+        </div>
+    
+    </div>
+    
+    
+    
+    
+</div>
+    
+
+    
+    
+    </div>
+</body>
+</html>
+
+
+
+<div class=''>
+</div>
+<div class=''>
+</div>
+<div class=''>
+</div>
+<div class=''>
+</div>
+<div class=''>
+</div>
+<div class=''>
+</div>
