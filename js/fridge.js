@@ -29,6 +29,8 @@ $(document).ready(function() {
             food_type: 0,
             food_id: 0,
             food_view: false,
+            cook_book_view: false,
+            cook_book_descrpition: "",
             food_list: 
             {
                 0:{
@@ -134,7 +136,101 @@ $(document).ready(function() {
                     },
                 },
             },  
-            //now_food_list: food_list[0],
+            cookbook_types: {
+                "0": "湘菜",
+                "1": "鲁菜",
+                "2": "川菜",
+                "3": "京菜",
+                "4": "淮阳菜",
+                "5": "晋菜",
+            },
+            cookbook_type: 0,
+            cookbook_list: {
+                0: {
+                    1: {
+                       id: 1,
+                       name: "口水鸡",
+                       material: "土鸡 花生 湘菜 独蒜 花椒",
+                       diffculty: "初级",
+                       skill: "炖",
+                       time: "30-60分钟",
+                       image_src: "images/koushuiji.png",
+                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
+                    },
+                    2: {
+                       id: 2,
+                       name: "口水鸡2",
+                       material: "土鸡 花生 湘菜 独蒜 花椒",
+                       diffculty: "初级",
+                       skill: "炖",
+                       time: "30-60分钟",
+                       image_src: "images/koushuiji.png",
+                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
+                    },
+                    3: {
+                       id: 3,
+                       name: "口水鸡3",
+                       material: "土鸡 花生 湘菜 独蒜 花椒",
+                       diffculty: "初级",
+                       skill: "炖",
+                       time: "30-60分钟",
+                       image_src: "images/koushuiji.png",
+                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
+                    },
+                    4: {
+                       id: 4,
+                       name: "口水鸡4",
+                       material: "土鸡 花生 湘菜 独蒜 花椒",
+                       diffculty: "初级",
+                       skill: "炖",
+                       time: "30-60分钟",
+                       image_src: "images/koushuiji.png",
+                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
+                    },
+                },
+                1: {
+                    1: {
+                       id: 1,
+                       name: "口水鸡",
+                       material: "土鸡 花生 湘菜 独蒜 花椒",
+                       diffculty: "初级",
+                       skill: "炖",
+                       time: "30-60分钟",
+                       image_src: "images/koushuiji.png",
+                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
+                    },
+                    2: {
+                       id: 2,
+                       name: "口水鸡2",
+                       material: "土鸡 花生 湘菜 独蒜 花椒",
+                       diffculty: "初级",
+                       skill: "炖",
+                       time: "30-60分钟",
+                       image_src: "images/koushuiji.png",
+                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
+                    },
+                    3: {
+                       id: 3,
+                       name: "口水鸡3",
+                       material: "土鸡 花生 湘菜 独蒜 花椒",
+                       diffculty: "初级",
+                       skill: "炖",
+                       time: "30-60分钟",
+                       image_src: "images/koushuiji.png",
+                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
+                    },
+                    4: {
+                       id: 4,
+                       name: "口水鸡4",
+                       material: "土鸡 花生 湘菜 独蒜 花椒",
+                       diffculty: "初级",
+                       skill: "炖",
+                       time: "30-60分钟",
+                       image_src: "images/koushuiji.png",
+                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
+                    },
+                },
+            },
             
         },
         methods: {
@@ -151,6 +247,12 @@ $(document).ready(function() {
                 true_main_div.food_type = food_type;
                 //console.log(now_food_list);
             },
+            choose_cookbook_type: function (event) {
+                var target = event.currentTarget;
+                var cookbook_type = $(target).attr("cb_type");
+                console.log(cookbook_type);
+                true_main_div.cookbook_type = cookbook_type;
+            },
             view_food: function (event) {
                 var target = event.currentTarget;
                 var food_id = $(target).attr("food_id");
@@ -158,9 +260,19 @@ $(document).ready(function() {
                 true_main_div.food_id = food_id;
                 true_main_div.food_view = true;
             },
+            view_cook_book: function (event) {
+                var target = event.currentTarget;
+                var description = $(target).attr("descrpition");
+                console.log(description);
+                true_main_div.cook_book_description = description;
+                true_main_div.cook_book_view = true;
+            },
             close_view_food: function () {
                 true_main_div.food_view = false;
-            }
+            },
+            close_view_cookbook: function () {
+                true_main_div.cook_book_view = false;
+            },
         },
     });
     

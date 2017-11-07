@@ -69,6 +69,10 @@
     min-height: 700px;
     background: -webkit-gradient(linear, 0 0, 100% 0, from(#273C4F), to(#283848));
 }
+.footer_div {
+    min-height: 200px;
+    background: -webkit-gradient(linear, 0 0, 100% 0, from(#1D2434), to(#212E3E));
+}
 .choose_fridge_and_foodtype {
     color: #AEC6E0;
     font-size: 1.4em;   
@@ -105,13 +109,15 @@
     color: #AEC6E0;
     line-height: 60px;
     font-size: 2em;
-    padding-left: 30px;
     color: #AEC6E0;
     cursor: pointer;
 }
 
 .menu_list_click, .food_type_choose {
     color: white;
+}
+.menu_list_click {
+    border-bottom: 2px white solid;
 }
 .food_type_choose {
     border: 2px solid white;
@@ -128,4 +134,51 @@
     width: 400px;
     height: 400px;
     background-color: white;
+}
+
+.cook_book_descrpition {
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 999;
+    width: 400px;
+    height: 400px;
+    background-color: white;
+}
+
+.cb_type {
+    padding: 10px;
+    margin: 10px;
+    color: #AEC6E0;
+    border: 1px solid #AEC6E0;
+    border-radius: 15px;
+    width: 15%;
+    display: inline-flex;
+    justify-content:center;
+}
+
+.cookbook_type_choose {
+    color: white;
+    background-color: #AEC6E0;
+}
+
+.cookbook_show  > div{
+    display: inline-block;
+}
+
+
+.cookbook_detail {
+    color: #AEC6E0;
+}
+.cb_name, .footer_right_icon {
+    color: white;
+}
+
+.footer_div > div{
+    display: inline-flex;
+}
+.footer_info {
+    background-color: : #AEC6E0;
+    padding: 15px;
+    color: white;
 }

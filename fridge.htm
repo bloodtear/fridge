@@ -119,19 +119,39 @@
         </div>
 
         <div v-else-if="main_flag == 1" class=''>
-                <div class='fridge-show'>
-                    <img src='images/circle.png'/><span>1</span>
-                </div>
+
             
         
         </div>
 
         <div v-else-if="main_flag == 2" class=''>
-                <div class='fridge-show'>
-                    <img src='images/circle.png'/><span>2</span>
+            <div class='cookbook_type_list'>
+                <div class='cb_type' v-for="(cb_type, cbid) in cookbook_types"  v-bind:cb_type='cbid' v-bind:class="{cookbook_type_choose: cookbook_type == cbid}" v-on:click="choose_cookbook_type"  >
+                {{cb_type}}
                 </div>
-            
-        
+            </div>
+            <div class='cookbook_show_list'>
+                <div class='cookbook_show' v-bind:descrpition="cookbook.description" v-on:click="view_cook_book" v-for="(cookbook, cid) in cookbook_list[cookbook_type]">
+                    <div class='cookbook_image'>
+                        <img v-bind:src="cookbook.image_src"/>
+                    </div>
+                    <div class='cookbook_detail'>
+                        <div class='cb_name'>{{cookbook.name}}</div>
+                        <div class='cb_material'>{{cookbook.material}}</div>
+                        <div class='cb_diffculty'>{{cookbook.diffculty}}</div>
+                        <div class='cb_skill'>{{cookbook.skill}}</div>
+                        <div class='cb_time'>{{cookbook.time}}</div>
+                    </div>
+                </div>
+                
+                <div v-if="cook_book_view == true" class='view_cookbook'>
+                    <div class='cook_book_descrpition'>
+                        <div>{{cook_book_description}}</div>
+                        <div class='btn btn-default close_cookbook_view_btn' v-on:click="close_view_cookbook">确定</div>
+                    </div>
+                </div>
+                
+            </div>
         </div>
     
     </div>
@@ -141,7 +161,28 @@
     
 </div>
     
+<div class='footer_div'>
+    <div class=''>
+        <img src='images/circle.png'/>
+    </div>
+    <div class='footer_info'>白菜已经保存了三天，为保持营养，请您尽快食用~</div>
+    <div class='footer_right_icon'>
+        <div class=''>
+            CHENGDE <br>CHINA
+        </div>
+        <div class=''>
+            <div class=''>
+                <img src='images/circle.png'/>
+            </div>
+            <div class=''>
+            Big Data R&D <br>Exhibition Center
+            </div>
+        </div>
+    
+    
+    </div>
 
+</div>
     
     
     </div>
