@@ -4,28 +4,22 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no"/>
-
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css" type="text/css">
-        <!--<link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">-->
+        <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/fridge.css">
         <link rel="stylesheet" href="vendor/jquery-ui-1.12.1/jquery-ui.min.css">
         <link rel="stylesheet" href="vendor/jquery-ui-1.12.1/jquery-ui.theme.min.css">
         <link rel="stylesheet" href="vendor/jquery-ui-1.12.1/jquery-ui.structure.min.css">
-        
         <script src="vendor/jquery/jquery-2.1.1.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
         <!--<script src="vendor/metisMenu/metisMenu.min.js"></script>-->
         <script src="vendor/jquery-ui-1.12.1/jquery-ui.min.js"></script>
-        
         <script src="vendor/vue/vue.js"></script>
-        
         <script src="js/fridge.js"></script>
-
         <title> 冰箱 </title>
     </head>
 <body>
     <div class="main-wrapper">
-
     <div class='header-wrapper'>
         <div class='left-header'>
             <div class='chs-title'>智慧家庭</div>
@@ -46,11 +40,6 @@
                 <img src='images/icon.png'/>
                 <img src='images/icon.png'/>
             </div>
-            
-            
-            
-            
-            
         </div>
         
         <div class='right-header'>
@@ -75,14 +64,11 @@
         </div>
     </div>
     
-    
     <div class='hello_word'>
         HI， 早上好，美好的早餐会让您活力充沛一整天
     </div>
     
-    
 <div class='true_main_div'>
-
 
     <div class='menu_list box'>
         <div class='item text-center menu_btn' v-on:click="change_main_flag" v-bind:main_flag='0' v-bind:class="{menu_list_click: main_flag == 0}">食材管理</div>
@@ -119,9 +105,75 @@
         </div>
 
         <div v-else-if="main_flag == 1" class=''>
+            <div class='mall_intro box'>
+                <div class=''>
+                    <img src='images/circle.png'/>
+                </div>
+                <div class=''>
+                    采购市场
+                </div>
+            </div>
+            <div class='mall_type_list box'>
+                <div class='mall_type box item ' v-on:click="choose_mall_type" v-bind:class="{mall_type_choose: mall_type_id == mall_id}" v-for="(mall_type, mall_id) in mall_type_list" v-bind:mall_id='mall_id' >
+                    {{mall_type}}
+                </div>
+            </div>
+            <div class='filter_market_brand'>
+                <div class=''>
+                    <div class=' market_intro'>超市：</div>
+                    <div class='market_list ' v-on:click="choose_market"  v-bind:class="{market_choosed: choose_market_id == market_id}"  v-for="(market_name, market_id) in market_list"  v-bind:market_id='market_id' >
+                        {{market_name}}
+                    </div>
+                </div>
+                <div class=''>
+                    <div class='brand_intro'>品牌：</div>
+                    <div class='brand_list ' v-on:click="choose_brand"  v-bind:class="{brand_choosed: choose_brand_id == brand_id}"  v-for="(brand_name, brand_id) in brand_list"  v-bind:brand_id='brand_id' >
+                        {{brand_name}}
+                    </div>
+                </div>
+            </div>
+            <div class='good_list'>
+                <div class='good_item' v-for="(good, good_id) in good_list">
+                    <div>
+                        <img v-bind:src="good.image_src" />
+                    </div>
+                    <div class='good_name'>{{good.name}}</div>
+                    <div class='good_footer'>
+                        <div class=''>
+                            <div class=''>{{good.market}}</div>  
+                            <div class=''>{{good.price}}</div>
+                        </div>
+                        <div class='fa fa-cart-plus cart_btn fa-2x' v-on:click="add_good" v-bind:good_id="good.id">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='cart_div'>
+                <div class='cart_status_show'>
+                    <div class='show_cart_list_detail' v-on:click="show_cart_list_detail">去结算</div>
+                    <div class='cart_intro'>
+                        <div class='cart_intro_title'>购物清单</div><br>
+                        <div class='cart_intro_time'><span class='fa fa-clock-o'></span><span>预计47分钟后送达</span></div>
+                    </div>
+                    <div class='total_count'>
+                        <div>{{total_count}}</div>
+                    </div>
+                    <div class='total_price'>
+                        ￥：<div>{{total_price}}</div>
+                    </div>
+                </div>
+            </div>
 
+            <div v-if="view_cart_list_detail == true" class='view_cart_list_detail'>
+                <div class='view_cart_list_detail'>
+                    <div class='btn btn-default close_view_cart' v-on:click="close_view_cart">确定</div>
+                </div>
+            </div>
             
         
+            
+
         </div>
 
         <div v-else-if="main_flag == 2" class=''>

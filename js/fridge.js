@@ -30,6 +30,7 @@ $(document).ready(function() {
             food_id: 0,
             food_view: false,
             cook_book_view: false,
+            view_cart_list_detail: false,
             cook_book_descrpition: "",
             food_list: 
             {
@@ -231,8 +232,68 @@ $(document).ready(function() {
                     },
                 },
             },
-            
+            mall_type_list: {
+                0: "海产类",
+                1: "肉类",
+                2: "家禽类",
+                3: "果蔬类",
+                4: "面点类",
+                5: "干货调料",
+            },
+            mall_type_id: 0,
+            market_list:{
+                0: "XXX超市",
+                1: "YYY超市",
+            },
+            choose_market_id: 0,
+            brand_list:{
+                0: "XXX品牌",
+                1: "YYY品牌",
+            },
+            choose_brand_id: 0,
+            total_count: 0,
+            total_price: 0.00,
+            good_list: {
+                1: {
+                    id:1,
+                    name: "太古白菜",
+                    market: "XX超市",
+                    price: "5.60",
+                    image_src: "images/cabbage",
+                },
+                2: {
+                    id:2,
+                    name: "太古白菜",
+                    market: "XX超市",
+                    price: "5.60",
+                    image_src: "images/cabbage",
+                },
+                3: {
+                    id:3,
+                    name: "太古白菜",
+                    market: "XX超市",
+                    price: "5.60",
+                    image_src: "images/cabbage",
+                },
+                4: {
+                    id:4,
+                    name: "太古白菜",
+                    market: "XX超市",
+                    price: "5.60",
+                    image_src: "images/cabbage",
+                },
+                5: {
+                    id:5,
+                    name: "太古白菜",
+                    market: "XX超市",
+                    price: "5.60",
+                    image_src: "images/cabbage",
+                },
+            },
+            cart_good_list: [],
         },
+
+        
         methods: {
             change_main_flag: function (event) {
                 var target = event.currentTarget;
@@ -252,6 +313,24 @@ $(document).ready(function() {
                 var cookbook_type = $(target).attr("cb_type");
                 console.log(cookbook_type);
                 true_main_div.cookbook_type = cookbook_type;
+            },
+            choose_mall_type: function (event) {
+                var target = event.currentTarget;
+                var mall_id = $(target).attr("mall_id");
+                console.log(mall_id);
+                true_main_div.mall_type_id = mall_id;
+            },
+            choose_market: function (event) {
+                var target = event.currentTarget;
+                var market_id = $(target).attr("market_id");
+                console.log(market_id);
+                true_main_div.choose_market_id = market_id;
+            },
+            choose_brand: function (event) {
+                var target = event.currentTarget;
+                var brand_id = $(target).attr("brand_id");
+                console.log(brand_id);
+                true_main_div.choose_brand_id = brand_id;
             },
             view_food: function (event) {
                 var target = event.currentTarget;
@@ -273,6 +352,30 @@ $(document).ready(function() {
             close_view_cookbook: function () {
                 true_main_div.cook_book_view = false;
             },
+            close_view_cart: function () {
+                true_main_div.view_cart_list_detail = false;
+            },
+            add_good: function () {
+                var target = event.currentTarget;
+                var good_id = $(target).attr("good_id");
+                console.log(good_id);
+                true_main_div.cart_good_list.push(good_id);
+                true_main_div.refresh_good_list();
+            },
+            refresh_good_list: function () {
+                console.log(true_main_div.cart_good_list);
+                true_main_div.total_price = 0;
+                for (var i in true_main_div.cart_good_list) {
+                    var good_id = true_main_div.cart_good_list[i];
+                    true_main_div.total_price += parseFloat(true_main_div.good_list[good_id].price);
+                }
+                true_main_div.total_price = true_main_div.total_price.toFixed(2);
+                true_main_div.total_count = true_main_div.cart_good_list.length;
+            },
+            show_cart_list_detail: function () {
+                console.log(true_main_div.cart_good_list);
+                true_main_div.view_cart_list_detail = true;
+            }
         },
     });
     

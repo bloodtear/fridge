@@ -146,6 +146,16 @@
     background-color: white;
 }
 
+.view_cart_list_detail {
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 999;
+    width: 400px;
+    height: 400px;
+    background-color: white;
+}
+
 .cb_type {
     padding: 10px;
     margin: 10px;
@@ -155,6 +165,7 @@
     width: 15%;
     display: inline-flex;
     justify-content:center;
+    cursor: pointer;
 }
 
 .cookbook_type_choose {
@@ -181,4 +192,133 @@
     background-color: : #AEC6E0;
     padding: 15px;
     color: white;
+}
+
+.mall_intro{
+    color: white;
+}
+
+.mall_type {
+    padding: 15px;
+    cursor: pointer;
+    color: #AEC6E0;
+    text-align: center;
+    justify-content: center ;
+}
+
+.mall_type_choose {
+    color: white;
+    background-color: #364C61;
+}
+
+.market_list, .brand_list {
+    color: #AEC6E0;
+    cursor: pointer;
+}
+
+.market_choosed, .market_intro , .brand_choosed, .brand_intro{
+    color: white;
+}
+
+.market_intro , .market_list , .brand_intro , .brand_list {
+    display: inline-flex;
+    padding: 20px;
+}
+
+.filter_market_brand {
+    margin: 15px;
+    padding: 15px;
+    background-color: #364C61;
+}
+
+.good_list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    height: 690px;
+    overflow-y: scroll;
+}
+
+
+.good_item {
+    width: 30%;
+    background-color: #364C61;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 15px;
+    height: 330px;
+}
+
+.good_name {
+    color: white;
+}
+.good_footer {
+    color: red;
+}
+
+.good_footer > div {
+    display: inline-block;
+}
+
+.cart_btn {
+    color: white;
+    float: right;
+    margin-right: 20px;
+}
+
+.cart_status_show {
+
+    width: auto;
+    background-color: #364C61;
+    height: 80px;
+    border-radius: 15px;
+}
+
+.show_cart_list_detail {
+    border-radius: 15px;
+    background-color: red;
+    color: white;
+    height: 80px;
+    line-height: 60px;
+    width: 150px;
+}
+
+.cart_status_show > div {
+    display: inline-flex;
+    align-items: center;
+}
+
+.cart_intro span {
+    color: #AEC6E0;
+}
+
+
+
+.cart_intro {
+    color: white;
+}
+
+.total_price {
+    color: red;
+    float:right;
+    margin-right: 30px;
+    line-height: 80px;
+}
+
+.total_count {
+    color: white;
+    float:right;
+    background-color: red;
+    border-radius:30px;
+    width: 30px;
+    height: 30px;
+    margin-right: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+
+.cart_intro_title {
+    font-size: 2em;
+    display: block;
 }
