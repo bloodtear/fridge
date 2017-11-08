@@ -126,7 +126,6 @@
                         </div>
                         <div class='no_eat_title'>已经过期<br>请勿食用
                         </div>-->
-                    
                     </div>
                 </div>
                 <div class='food_right'>
@@ -153,7 +152,85 @@
                 </div>
                 <div class='line_w'></div>
                 <div class='food_detail_second_header'>
-                    
+                    <div class='food_detail_left_day' v-if="food_list[food_id].left_day > 0">
+                        <div class='food_detail_left_day_num'>{{food_list[food_id].left_day}}</div>
+                        <div class='food_detail_left_icon'>
+                            <div class=''>
+                                <img src='images/1/Clock.png'/>
+                            </div>
+                            <div class='left_day_intro'>天后过期</div>
+                        </div>
+                    </div><div class='no_food_detail_left_day' v-else="">已过期</div><div class='food_detail_weight'>
+                        <div class='qinake'>千克</div>
+                        <div class='detail_weight'>{{food_list[food_id].weight}}</div>
+                        <div class='cunliang'>存量</div>
+                    </div>
+                </div>
+                <div class='food_detail_body_div'>
+                    <div class=''>
+                        <img v-bind:src="food_list[food_id].image_src" />
+                    </div>
+                    <div class='food_detail_body_list'>
+                        <div class='detail_row'>
+                            <div class='food_detail_body_list_item'>
+                                <div class='detail_head'>销售公司</div>
+                                <div class='detail_body'>{{food_list[food_id].detail.sale_company}}</div>
+                            </div>
+                            <div class='food_detail_body_list_item'>
+                                <div class='detail_head'>生产企业</div>
+                                <div class='detail_body'>{{food_list[food_id].detail.production_company}}</div>
+                            </div>
+                        </div>
+                        <div class='detail_row'>
+                            <div class='food_detail_body_list_item'>
+                                <div class='detail_head'>销售地点</div>
+                                <div class='detail_body'>{{food_list[food_id].detail.sale_place}}</div>
+                            </div>
+                            <div class='food_detail_body_list_item'>
+                                <div class='detail_head'>原始产地</div>
+                                <div class='detail_body'>{{food_list[food_id].detail.orgin_area}}</div>
+                            </div>
+                        </div>
+                        <div class='detail_row'>
+                            <div class='food_detail_body_list_item'>
+                                <div class='detail_head'>销售轨迹</div>
+                                <div class='detail_body'>{{food_list[food_id].detail.sale_track}}</div>
+                            </div>
+                            <div class='food_detail_body_list_item'>
+                                <div class='detail_head'>具体农户</div>
+                                <div class='detail_body'>{{food_list[food_id].detail.farmer}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='detail_descrpition'>
+                        {{food_list[food_id].description}}
+                    </div>
+                    <div class='nutrition_list'>
+                        <div class='nutrition_intro'>
+                            每100克
+                        </div>
+                        <div class='nutrition_detail'>
+                            <div class='nutrition_detail'>
+                                <div class='nutrition_detail_item'>
+                                    <div class='nutrition_detail_num'>{{food_list[food_id].nutrition.heat}}</div>
+                                    <div class='nutrition_detail_unit'>热量(大卡)</div>
+                                </div>
+                                <div class='nutrition_detail_item'>
+                                    <div class='nutrition_detail_num'>{{food_list[food_id].nutrition.carbohydrate}}</div>
+                                    <div class='nutrition_detail_unit'>碳水化合物(克)</div>
+                                </div>
+                                <div class='nutrition_detail_item'>
+                                    <div class='nutrition_detail_num'>{{food_list[food_id].nutrition.fibre}}</div>
+                                    <div class='nutrition_detail_unit'>纤维素(克)</div>
+                                </div>
+                                <div class='nutrition_detail_item'>
+                                    <div class='nutrition_detail_num'>{{food_list[food_id].nutrition.fat}}</div>
+                                    <div class='nutrition_detail_unit'>脂肪(克)</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
 

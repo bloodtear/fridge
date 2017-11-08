@@ -264,6 +264,7 @@
     height: 165px;
     float:right;
     vertical-align: bottom;
+    margin-right: 10px;
 }
 .left_day_div {
     padding-left: 8px;
@@ -483,17 +484,135 @@
     padding: 15px;
 }
 
+.food_detail_second_header {
+    padding-left: 46px;
+}
+.food_detail_second_header > div {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.food_detail_left_day,.no_food_detail_left_day {
+    height: 57px;
+    background-image: url("../images/1/弹出-过期天数背景.png");
+    width: 213px;
+    z-index: 1999;
+}
+.food_detail_weight {
+    height: 57px;
+    background-image: url("../images/1/弹出-剩余存量背景.png");
+    width: 384px;
+}
+.no_food_detail_left_day {
+    line-height: 57px;
+    padding-left: 13px;
+    font-size: 30px;
+    color: #EAACFF;
+}
+.food_detail_left_day >div  {
+    display: inline-block;
+}
+.food_detail_left_day_num {
+    padding-left: 13px;
+    font-size: 35px;
+    color: #EAACFF;
+}
+.food_detail_left_icon img {
+    margin-top: 15px;
+}
+.left_day_intro {
+    color: #EAACFF;
+    font-size: 12px;
+}
+
+.food_detail_weight .qinake {
+    font-size: 14px;
+    color: #AF2CD4;
+    padding: 8px 10px 0 9px;
+}
+.food_detail_weight .detail_weight {
+    padding: 8px 0 0 14px;
+    font-size: 33px;
+    color: #F6AEFF;
+}
+.food_detail_weight .cunliang {
+    padding: 34px 0 0 0 ;
+    font-size: 14px;
+    color: #AF2CD4;
+}
+
+.food_detail_weight > div {
+    display: inline-block;
+    float: right;
+}
+.food_detail_body_div {
+    height: 295px;
+    border: 0px solid black;
+    padding: 35px 45px 35px 45px;
+}
+
+.food_detail_body_div img {
+    height: 170px;
+}
+.food_detail_body_div > div  {
+    display: inline-block;
+    border: 0px solid ;
+}
+.food_detail_body_list {
+    margin-left: 25px;
+    width: 390px;
+    vertical-align: top;
+}
+.detail_descrpition {
+    color: #EAACFF;
+    padding-top: 10px;
+}
+.food_detail_body_list_item {
+    vertical-align: top;
+    padding: 6px;
+    width: 45%;;
+    display: inline-block;
+}
+
+.detail_head {
+    height: 18px;
+    width: 70px;
+    text-align: center;
+    background-color: #EAACFF;
+    color:  #A64BDC;
+    border-radius: 3px;
+    display:block;
+
+}
+.detail_body {
+    padding-top:8px;
+    color: white;
+    width: 210px;
+}
 
 
-
-
-
-
-
-
-
-
-
+.nutrition_list {
+    border : 1px solid;
+    width: 595px;
+    height: 25px;
+    background-image: url("../images/1/每一百克背景图2.png");
+    background-repeat: no-repeat;
+    font-size: 12px;
+    color: #D265EF;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+.nutrition_detail_item {
+    display: inline-block;
+    width: 24%;
+}
+.nutrition_detail_num {
+    color: white;
+    font-size: 34px;
+}
+.nutrition_detail_unit {
+    color: #EA8EFC;
+}
 .cookbook_type_choose {
     color: white;
     background-color: #AEC6E0;
