@@ -1,8 +1,8 @@
 @font-face {
     /* font-properties */
     font-family: pingfang;
-    src:url('ttf/苹方黑体-极细-简.ttf'),  
-    url('tt/苹方黑体-极细-简.ttf'),
+    src:url('ttf/苹方黑体-纤细-简.ttf'),
+    url('ttf/苹方黑体-纤细-简.ttf');
     /*url('pictos/pictos-web.eot');  IE9 */
 }
 
@@ -11,7 +11,7 @@
 .main-wrapper {
     height: 1366px;
     width: 768px;
-    font-family: pingfang;
+    font-family: 'pingfang';
 }
 
 .header-wrapper {
@@ -315,16 +315,8 @@
     text-align: right;
     color: #7C4C97;
 }
-.no_eat {
-    margin-top: 80px;
-    padding-left: 10px;
-}
-.no_eat img {
-    vertical-align: top;
-}
-.no_eat >div  {
-    display: inline-block;
-    vertical-align: top;
+.no_eat img{
+    z-index: 999;
 }
 .no_eat_title {
     color: white;
@@ -411,12 +403,13 @@
 
 .food_detail {
     position: fixed;
-    top:0;
-    left:0;
+    top: 100px;
+    left: 40px;
     z-index: 999;
-    width: 400px;
-    height: 400px;
-    background-color: white;
+    width: 689px;
+    height: 586px;
+    background-image: url("../images/1/弹出-背景.png");
+    background-position: -40px -430px;
 }
 
 .cook_book_descrpition {
@@ -450,6 +443,47 @@
     justify-content:center;
     cursor: pointer;
 }
+.food_detail_header > div {
+    display: inline-block
+}
+.food_detail_header {
+    border: 0px solid black;
+    position:relative;
+    text-align: center;
+}
+.chs_name {
+    margin-top: 15px;
+    font-size: 34px;
+    color: white;
+}
+.english_name {
+    font-size: 17px;
+    color: #AA57D1;
+}
+
+.line_w {
+    width: 100%;
+    height: 2px;
+    color: white;
+    display: block;
+}
+.close_view_food {
+    position: absolute;
+    right:0;
+    float: right;
+    padding: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
 
 .cookbook_type_choose {
     color: white;

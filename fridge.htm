@@ -121,10 +121,11 @@
                     <div class='food_name'>{{food_list[food_id].name}}</div>
                     <div class='food_weight'>{{food_list[food_id].weight}}千克</div>
                     <div class='no_eat'>
-                        <div><img src='images/1/白色叹号icon.png'/>
+                        <div><img src='images/1/已经过期.png'/></div>
+                        <!--<div><img src='images/1/白色叹号icon.png'/>
                         </div>
                         <div class='no_eat_title'>已经过期<br>请勿食用
-                        </div>
+                        </div>-->
                     
                     </div>
                 </div>
@@ -134,20 +135,28 @@
                 </div>
             </div>
         </div>
-        <!--<div v-if="food_view == true" class='view_food'>
+        <div v-if="food_view == true" class='view_food'>
             <div class='food_detail'>
-                <img v-bind:src="food_list[food_type][food_id].icon_src"/>
-                <div>{{food_list[food_type][food_id].name}}</div>
-                <div class='btn btn-default close_view_btn' v-on:click="close_view_food">确定</div>
+                <div class='food_detail_header'>
+                    <div class='name_detail'>
+                        <div class='chs_name'>
+                        {{food_list[food_id].name}}
+                        </div>
+                        <div class='english_name'>
+                        {{food_list[food_id].english_name}}
+                        </div>
+                    </div>
+                    <div class='close_view_food' v-on:click="close_view_food">
+                        <img src='images/1/弹出-关闭icon.png'/>
+                    </div>
+                </div>
             </div>
-        </div>-->
-        
+            <div class='line_w'></div>
+        </div>
         <div class='food_vew_footer'>
             <div class='food_page_item' v-on:click="choose_food_page"  v-bind:page_id="page_id"  v-bind:class="{food_page_item_choose: food_page == page_id}" v-for="page_id in food_page_icons">
             </div>
-        
         </div>
-
     </div>
 
         <div v-else-if="main_flag == 1" class=''>

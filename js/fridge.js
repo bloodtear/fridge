@@ -29,7 +29,7 @@ $(document).ready(function() {
         data: {
             main_flag: 0,
             food_type: 0,
-            food_id: 0,
+            food_id: 1,
             food_view: false,
             food_page: 0,
             cook_book_view: false,
@@ -45,7 +45,7 @@ $(document).ready(function() {
                 1: {
                     id: 1,
                     name: "苹果",
-                    englisg_name: "apple",
+                    english_name: "apple",
                     weight: "2",
                     left_day: 15,
                     cycle: '2017.11.3 - 2017.11.20',
@@ -69,7 +69,7 @@ $(document).ready(function() {
                 2: {
                     id: 2,
                     name: "猕猴桃",
-                    englisg_name: "kiwifruit",
+                    english_name: "kiwifruit",
                     weight: "2",
                     left_day: 3,
                     cycle: '2017.11.3 - 2017.11.20',
@@ -93,7 +93,7 @@ $(document).ready(function() {
                 3: {
                     id: 3,
                     name: "柠檬",
-                    englisg_name: "lemon",
+                    english_name: "lemon",
                     weight: "0.6",
                     left_day: 0,
                     cycle: '2017.11.3 - 2017.11.20',
