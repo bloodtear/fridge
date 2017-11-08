@@ -318,6 +318,14 @@
 .no_eat img{
     z-index: 999;
 }
+
+.no_eat {
+    z-index: 1200;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-image: url("../images/1/已经过期2.png");
+    background-position: -2px -95px;
+}
 .no_eat_title {
     color: white;
     font-size: 10px;
@@ -403,7 +411,7 @@
 
 .food_detail {
     position: fixed;
-    top: 100px;
+    top: 20px;
     left: 40px;
     z-index: 999;
     width: 689px;
@@ -462,10 +470,11 @@
 }
 
 .line_w {
-    width: 100%;
+
+    margin: 15px 45px 15px 45px;
     height: 2px;
-    color: white;
-    display: block;
+    background-color: #9B4ED9;
+
 }
 .close_view_food {
     position: absolute;

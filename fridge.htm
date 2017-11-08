@@ -121,7 +121,7 @@
                     <div class='food_name'>{{food_list[food_id].name}}</div>
                     <div class='food_weight'>{{food_list[food_id].weight}}千克</div>
                     <div class='no_eat'>
-                        <div><img src='images/1/已经过期.png'/></div>
+                        <div><img src='!images/1/已经过期2.png'/></div>
                         <!--<div><img src='images/1/白色叹号icon.png'/>
                         </div>
                         <div class='no_eat_title'>已经过期<br>请勿食用
@@ -130,7 +130,8 @@
                     </div>
                 </div>
                 <div class='food_right'>
-                    <div class='cycle'>{{food_list[food_id].cycle}}</div>
+                    <!--<div class='cycle'>{{food_list[food_id].cycle}}</div>-->
+                    <div class='cycle'><img src='images/1/保质期限.png'/></div>
                     <img class='image_v' v-bind:src="food_list[food_id].image_src"/>
                 </div>
             </div>
@@ -150,8 +151,12 @@
                         <img src='images/1/弹出-关闭icon.png'/>
                     </div>
                 </div>
+                <div class='line_w'></div>
+                <div class='food_detail_second_header'>
+                    
+                </div>
             </div>
-            <div class='line_w'></div>
+
         </div>
         <div class='food_vew_footer'>
             <div class='food_page_item' v-on:click="choose_food_page"  v-bind:page_id="page_id"  v-bind:class="{food_page_item_choose: food_page == page_id}" v-for="page_id in food_page_icons">
