@@ -16,93 +16,139 @@
         <script src="vendor/jquery-ui-1.12.1/jquery-ui.min.js"></script>
         <script src="vendor/vue/vue.js"></script>
         <script src="js/fridge.js"></script>
-        <title> 冰箱 </title>
+        <title> 智能冰箱 </title>
     </head>
 <body>
     <div class="main-wrapper">
     <div class='header-wrapper'>
-        <div class='left-header'>
-            <div class='chs-title'>智慧家庭</div>
-            <div class='eng-title'>Smart Home</div>
-            <div class='temperature'>
-                <div class='refrigerator'>
-                    <div class='num'>-5℃</div>
-                    <div class='title'>冷藏室</div>
-                </div>
-                <div class='freezer'>
-                    <div class='num'>-35℃</div>
-                    <div class='title'>冷冻室</div>
-                </div>
-            </div>
-            <div class='header-icon-list'>
-                <img src='images/icon.png'/>
-                <img src='images/icon.png'/>
-                <img src='images/icon.png'/>
-                <img src='images/icon.png'/>
-            </div>
+        <div class='top_header'>
+        <img src='images/1/logo.png' />
+        
         </div>
         
-        <div class='right-header'>
+        
+        <div class='bottom_header'>
             <div class='datetime'>
                 <div class='date'>
                     {{now_date}}
-                </div>
+                </div><br>
                 <div class='time'>
                     {{now_time}}
                 </div>
-            </div>
-            <div class='weather'>
-                <img src='images/sun.png'/>
-            </div>
-            <div class='humidity'>
-                <img src='images/shidu.png'/><span>室外湿度：</span><span>48%</span>
-            </div>
-            <div class='wind'>
-                <img src='images/shidu.png'/><span>东南风：</span><span>4 级</span>
+            </div><div class='expired_food'>
+                <div class='exclamation_icon'>
+                    <img src='images/1/叹号icon.png'/>
+                </div>
+                <div class='expired_list'>
+                    <div class='expired_intro'>即将到达保质期的食物</div>
+                    <div class='expired_food_item'>
+                        <div class='expired_food_name'>白菜</div>
+                        <div class='progress_bar'><div class='bar_3'></div></div>
+                        <div class='in_time'>3天</div>
+                    </div>
+                    <div class='expired_food_item'>
+                        <div class='expired_food_name'>牛奶</div>
+                        <div class='progress_bar'><div class='bar_2'></div></div>
+                        <div class='in_time'>2天</div>
+                    </div>
+                    <div class='expired_food_item'>
+                        <div class='expired_food_name'>牛奶</div>
+                        <div class='progress_bar'><div class='bar_2'></div></div>
+                        <div class='in_time'>2天</div>
+                    </div>
+                </div>
+            </div><div class='rate'>
+                <div class='rate_intro'>利用率</div>
+                <div class='num'>
+                    <span class='num_1'>{{rate}}</span><span class='num_2'>%</span>
+                </div>
+            </div><div class='line_h'></div><div class='temperature'>
+                <div class='temperature_intro'>冷藏室温度</div>
+                <div class='num'>
+                    <div class='num_1'>{{temperature}}</div><div class='num_2'>℃</div>
+                </div>
             </div>
         
         </div>
+    
+        <div class='hello_word'>
+        HI， 早上好，美好的早餐会让您活力充沛一整天
+        </div>
     </div>
     
-    <div class='hello_word'>
-        HI， 早上好，美好的早餐会让您活力充沛一整天
-    </div>
+
     
 <div class='true_main_div'>
 
     <div class='menu_list box'>
-        <div class='item text-center menu_btn' v-on:click="change_main_flag" v-bind:main_flag='0' v-bind:class="{menu_list_click: main_flag == 0}">食材管理</div>
-        <div class='item text-center menu_btn' v-on:click="change_main_flag" v-bind:main_flag='1' v-bind:class="{menu_list_click: main_flag == 1}">在线生鲜</div>
-        <div class='item text-center menu_btn' v-on:click="change_main_flag" v-bind:main_flag='2' v-bind:class="{menu_list_click: main_flag == 2}">食谱推送</div>
-    </div>
+        <div class='item text-center menu_btn manage_menu_off' v-on:click="change_main_flag" v-bind:class="{manage_menu_on : main_flag == 0}" v-bind:main_flag='0'></div>
+        
+        <div class='item text-center menu_btn mall_menu_off' v-on:click="change_main_flag" v-bind:main_flag='1' v-bind:class="{mall_menu_on : main_flag == 1}" ></div>
+        <div class='item text-center menu_btn cookbook_menu_off' v-on:click="change_main_flag" v-bind:main_flag='2' v-bind:class="{cookbook_menu_on : main_flag == 2}" ></div>
+    </div><div class='true_main_div_body'>
     
-    <div class='true_main_div_body'>
-    
-        <div v-if="main_flag == 0" class=''>
-            <div class='choose_fridge_and_foodtype'>
-                <div class='fridge-show'>
-                    <img src='images/circle.png'/><span>冷藏室</span>
+    <div v-if="main_flag == 0" class=''>
+        <div class='food_list'>
+            <div class='food_item' v-for="food_id in food_page_list[food_page]" v-on:click="view_food" v-bind:food_id="food_id">
+                <div v-if="food_list[food_id].left_day > 0" class='food_left'>
+                    <div class='left_day_div'>
+                        <div class='left_day_div_left'>
+                        {{food_list[food_id].left_day}}
+                        </div>
+                        <div class='left_day_div_right'>
+                            <div>
+                                <img src='images/1/Clock.png'/>
+                            </div>
+                            <div class='day'>
+                            Day
+                            </div>
+                        </div>
+                    </div>
+                    <div class='food_name'>{{food_list[food_id].name}}</div>
+                    <div class='food_weight'>{{food_list[food_id].weight}}千克</div>
                 </div>
-                <div class='food_type_list'>
-                    <div class='text-center' v-on:click="change_food_type" v-bind:food_type='0' v-bind:class="{food_type_choose: food_type == 0}">蔬菜</div>
-                    <div class='text-center' v-on:click="change_food_type" v-bind:food_type='1' v-bind:class="{food_type_choose: food_type == 1}">水果</div>
-                    <div class='text-center' v-on:click="change_food_type" v-bind:food_type='2' v-bind:class="{food_type_choose: food_type == 2}">肉类</div>
+                <div class='no_food_left' v-else="">
+                    <div class='no_left_day_div'>
+                        <div class='no_left_day_div_left'>
+                        {{food_list[food_id].left_day}}
+                        </div>
+                        <div class='no_left_day_div_right'>
+                            <div class='day'>
+                            Day
+                            </div>
+                        </div>
+                    </div>
+                    <div class='food_name'>{{food_list[food_id].name}}</div>
+                    <div class='food_weight'>{{food_list[food_id].weight}}千克</div>
+                    <div class='no_eat'>
+                        <div><img src='images/1/白色叹号icon.png'/>
+                        </div>
+                        <div class='no_eat_title'>已经过期<br>请勿食用
+                        </div>
+                    
+                    </div>
                 </div>
-            </div>
-            <div class='food_list'>
-                <div class='food_item' v-for="food in food_list[food_type]" v-on:click="view_food" v-bind:food_id="food.id">
-                    <img v-bind:src="food.icon_src"/>
-                    <div>{{food.name}}</div>
-                </div>
-            </div>
-            <div v-if="food_view == true" class='view_food'>
-                <div class='food_detail'>
-                    <img v-bind:src="food_list[food_type][food_id].icon_src"/>
-                    <div>{{food_list[food_type][food_id].name}}</div>
-                    <div class='btn btn-default close_view_btn' v-on:click="close_view_food">确定</div>
+                <div class='food_right'>
+                    <div class='cycle'>{{food_list[food_id].cycle}}</div>
+                    <img class='image_v' v-bind:src="food_list[food_id].image_src"/>
                 </div>
             </div>
         </div>
+        <!--<div v-if="food_view == true" class='view_food'>
+            <div class='food_detail'>
+                <img v-bind:src="food_list[food_type][food_id].icon_src"/>
+                <div>{{food_list[food_type][food_id].name}}</div>
+                <div class='btn btn-default close_view_btn' v-on:click="close_view_food">确定</div>
+            </div>
+        </div>-->
+        
+        <div class='food_vew_footer'>
+            <div class='food_page_item' v-on:click="choose_food_page"  v-bind:page_id="page_id"  v-bind:class="{food_page_item_choose: food_page == page_id}" v-for="page_id in food_page_icons">
+            </div>
+        
+        </div>
+
+    </div>
 
         <div v-else-if="main_flag == 1" class=''>
             <div class='mall_intro box'>
@@ -213,7 +259,7 @@
     
 </div>
     
-<div class='footer_div'>
+<!--<div class='footer_div'>
     <div class=''>
         <img src='images/circle.png'/>
     </div>
@@ -234,7 +280,7 @@
     
     </div>
 
-</div>
+</div>-->
     
     
     </div>

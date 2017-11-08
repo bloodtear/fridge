@@ -12,11 +12,13 @@ $(document).ready(function() {
     console.log(now_time);
     
     
-    var right_header = new Vue({
-        el: '.right-header',
+    var header_wrapper = new Vue({
+        el: '.header-wrapper',
         data: {
             now_date: now_date,
-            now_time: now_time
+            now_time: now_time,
+            temperature: 4,
+            rate: 35,
         }
     })
     
@@ -29,112 +31,88 @@ $(document).ready(function() {
             food_type: 0,
             food_id: 0,
             food_view: false,
+            food_page: 0,
             cook_book_view: false,
             view_cart_list_detail: false,
             cook_book_descrpition: "",
-            food_list: 
-            {
-                0:{
-                    1: {
-                        id: 1,
-                        name: "西红柿",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
-                    },
-                    2: {
-                        id: 2,
-                        name: "西红柿2",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
-                    },
-                    3: {
-                        id: 3,
-                        name: "西红柿3",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
-                    },
-                    4: {
-                        id: 4,
-                        name: "西红柿4",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
-                    },
-                },
+            food_page_list: {
+                0: [1,1,1,1,2,3,1,1,1],
+                1: [1,2,1,1,1,1,1,1,1],
+                2: [1,3,1,1,2,3,1,2,3],
+            },
+            food_page_icons: [0, 1, 2],
+            food_list: {
                 1: {
-                    1: {
-                        id: 1,
-                        name: "水果",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
+                    id: 1,
+                    name: "苹果",
+                    englisg_name: "apple",
+                    weight: "2",
+                    left_day: 15,
+                    cycle: '2017.11.3 - 2017.11.20',
+                    image_src: 'images/1/苹果.png',
+                    detail: {
+                        sale_company: "承德市蓝旗商贸有限公司",
+                        production_company: "江苏省徐州市科技大棚基地",
+                        sale_place: "承德市华润超市",
+                        orgin_area: "江苏省徐州市沛县河口镇黄庄村",
+                        sale_track: "河北省内公路网络运输",
+                        farmer: "黄庄村 周先生",
                     },
-                    2: {
-                        id: 2,
-                        name: "水果2",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
-                    },
-                    3: {
-                        id: 3,
-                        name: "水果3",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
-                    },
-                    4: {
-                        id: 4,
-                        name: "水果4",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
-                    },
+                    description: "一种碳水化合物、水分、纤维、钾含量都较高的水果，对于缓解便秘，消除水肿均有一定帮助适宜减肥时食用。",
+                    nutrition:{
+                        heat: "54.00",
+                        carbohydrate: "12.30",
+                        fibre: "1.20",
+                        fat: "0.20",
+                    }
                 },
                 2: {
-                    1: {
-                        id: 1,
-                        name: "肉",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
+                    id: 2,
+                    name: "猕猴桃",
+                    englisg_name: "kiwifruit",
+                    weight: "2",
+                    left_day: 3,
+                    cycle: '2017.11.3 - 2017.11.20',
+                    image_src: 'images/1/猕猴桃.png',
+                    detail: {
+                        sale_company: "承德市蓝旗商贸有限公司",
+                        production_company: "江苏省徐州市科技大棚基地",
+                        sale_place: "承德市华润超市",
+                        orgin_area: "江苏省徐州市沛县河口镇黄庄村",
+                        sale_track: "河北省内公路网络运输",
+                        farmer: "黄庄村 周先生",
                     },
-                    2: {
-                        id: 2,
-                        name: "肉2",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
+                    description: "一种碳水化合物、水分、纤维、钾含量都较高的水果，对于缓解便秘，消除水肿均有一定帮助适宜减肥时食用。",
+                    nutrition:{
+                        heat: "54.00",
+                        carbohydrate: "12.30",
+                        fibre: "1.20",
+                        fat: "0.20",
+                    }
+                },
+                3: {
+                    id: 3,
+                    name: "柠檬",
+                    englisg_name: "lemon",
+                    weight: "0.6",
+                    left_day: 0,
+                    cycle: '2017.11.3 - 2017.11.20',
+                    image_src: 'images/1/柠檬.png',
+                    detail: {
+                        sale_company: "承德市蓝旗商贸有限公司",
+                        production_company: "江苏省徐州市科技大棚基地",
+                        sale_place: "承德市华润超市",
+                        orgin_area: "江苏省徐州市沛县河口镇黄庄村",
+                        sale_track: "河北省内公路网络运输",
+                        farmer: "黄庄村 周先生",
                     },
-                    3: {
-                        id: 3,
-                        name: "肉3",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
-                    },
-                    4: {
-                        id: 4,
-                        name: "肉4",
-                        weight: "500",
-                        limit_time: 3,
-                        icon_src: 'images/potato.png',
-                        image_src: 'images/image_potato.png',
-                    },
+                    description: "一种碳水化合物、水分、纤维、钾含量都较高的水果，对于缓解便秘，消除水肿均有一定帮助适宜减肥时食用。",
+                    nutrition:{
+                        heat: "54.00",
+                        carbohydrate: "12.30",
+                        fibre: "1.20",
+                        fat: "0.20",
+                    }
                 },
             },  
             cookbook_types: {
@@ -301,11 +279,11 @@ $(document).ready(function() {
                 console.log(main_flag);
                 true_main_div.main_flag = main_flag;
             },
-            change_food_type: function (event) {
+            choose_food_page: function (event) {
                 var target = event.currentTarget;
-                var food_type = $(target).attr("food_type");
-                console.log(food_type);
-                true_main_div.food_type = food_type;
+                var page_id = $(target).attr("page_id");
+                console.log(page_id);
+                true_main_div.food_page = page_id;
                 //console.log(now_food_list);
             },
             choose_cookbook_type: function (event) {
@@ -410,7 +388,7 @@ function format_date(timestamp) {
     var h = time.getHours();
     var mm = time.getMinutes();
     var s = time.getSeconds();
-    return y+'.' + add0(m)+'.' + add0(d);
+    return y+'年' + add0(m)+'月' + add0(d)+'日';
 }
 function format_time(timestamp){
     var time = new Date(timestamp);
@@ -420,5 +398,5 @@ function format_time(timestamp){
     var h = time.getHours();
     var mm = time.getMinutes();
     var s = time.getSeconds();
-    return add0(h)+' : '+add0(mm);
+    return add0(h)+'：'+add0(mm);
 }

@@ -1,13 +1,23 @@
+@font-face {
+    /* font-properties */
+    font-family: pingfang;
+    src:url('ttf/苹方黑体-极细-简.ttf'),  
+    url('tt/苹方黑体-极细-简.ttf'),
+    /*url('pictos/pictos-web.eot');  IE9 */
+}
+
+
+
 .main-wrapper {
-    !height: 1920px;
-    !width: 1080px;
+    height: 1366px;
+    width: 768px;
+    font-family: pingfang;
 }
 
 .header-wrapper {
-    padding: 15px;
     border:0px solid black;
-    height: 560px;
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(#233041), to(#324968));
+    !background: -webkit-gradient(linear, 0 0, 100% 0, from(#233041), to(#324968));
+    background-image: url("../images/1/上层背景图1.png");
 }
 
 .left-header {
@@ -25,32 +35,160 @@
 .datetime, .chs-title, .eng-title{
     color: white;
 }
+.date {
+    font-size: 13px;
+}
+.time {
+    font-size:30px;
+}
+.top_header {
+    padding-top: 20px;
+    padding-left:50px;
+    padding-bottom: 25px;
+}
+.bottom_header {
+    vertical-align: top;
+    padding-left: 40px;
+    padding-bottom: 20px;
+}
+
 .chs-title{
     font-size: 1.4em;
 }
 .datetime {
-    font-size: 1.4em;
-    padding: 15px;
-}
-.time {
-    float: right;
+    width: 135px;
+    height: 90px;
+    background-color: #C708D4;
+    padding-left: 15px;
+    padding-top:10px;
+    vertical-align: top;
 }
 
-.temperature > div {
+.bottom_header > div {
+    display: inline-block;
+    border: 0px solid white;
+}
+
+.expired_food {
+    width: 270px;
+    height: 90px;
+    background-image: url("../images/1/过期食品背景图.png");
+    background-position: -180px -120px;
+    z-index: 999;
+
+}
+.expired_food > div {
     display: inline-block;
 }
+
+.expired_food_item {
+    color: #BC05D8;
+    font-size: 12px;
+}
+
+.progress_bar {
+    width: 120px;
+    padding-left: 8px;
+    padding-right: 20px;
+    vertical-align: top;
+}
+
+.expired_food_name {
+    position: relative;
+    top: -6px;
+}
+.in_time {
+    position: relative;
+    top: -6px;
+}
+
+.rate_intro, .temperature_intro {
+    font-size: 12px;
+}
+
+.bar_3, .bar_2 {
+    border-top: 4px solid #BC05D8;
+
+}
+.exclamation_icon {
+    vertical-align: top;
+    padding: 5px 15px 0 20px;
+}
+
+.expired_list  > div {
+    display: block;
+}
+
+.expired_intro {
+    color: #C66CE1;
+    font-size: 12px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+}
+.expired_food_item > div  {
+    display: inline-block;
+}
+
+.num  > div{
+    display: inline-block;
+}
+
 
 .datetime > div {
     display: inline-block;
 }
 
+.temperature , .rate, .line_h {
+    float: right;
+    display: block;
+}
+
+.rate {
+    padding: 8px 35px 10px 0px;
+    width: 127px;
+}
+.temperature {
+    padding: 8px 0px 10px 25px;
+}
+
+.line_h {
+    width: 2px;
+    height: 48px;
+    margin: 35px 25px 0 25px;
+    background-color: #993CD3;
+    z-index:9999;
+}
+
+.rate_intro, .temperature_intro {
+    color: #A12EB4;
+}
+
+.num_1 {
+    color: white;
+    font-size: 46px;
+}
+.num_2{
+    color: #A12EB4;
+    font-size: 18px;
+    padding-left: 8px;
+}
+
 .hello_word {
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(#1D2434), to(#212E3E));
-    height: 60px;
-    line-height: 60px;
-    font-size: 2em;
-    padding-left: 30px;
-    color: #AEC6E0;
+    background-image: url("../images/1/早上好背景图.png");
+    background-position: 0px -230px;
+    height: 40px;
+    color: #C167DA;
+    font-size: 12px;
+    padding-left: 42px;
+    line-height: 40px;
+    vertical-align: bottom;
+}
+
+.food_vew_footer {
+    background-image: url("../images/1/底部背景图.png");
+    background-position: 0px -1330px;
+    height: 35px;
+    vertical-align: bottom;
 }
 
 .humidity, .wind {
@@ -66,8 +204,7 @@
 }
 
 .true_main_div {
-    min-height: 700px;
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(#273C4F), to(#283848));
+    min-height: 1060px;
 }
 .footer_div {
     min-height: 200px;
@@ -83,15 +220,116 @@
     color: #AEC6E0;
 }
 .food_item {
-    height: 110px;
-    border: white 1px solid;
-    display: inline-flex;
-    width: 33%;
+    margin: 10px 0 10px 10px;
+    height: 245px;
+    width: 245px;
+    border: 2px solid #7E268B;
+    display: inline-block;
+    vertical-align: top;
+    padding: 4px;
+    position: relative;
+}
+.food_left, .food_right {
+    display: inline-block;
+    vertical-align: top;
+}
+.food_left {
+    background-color: #5D2E84;
+    height: 55px;
+    width: 90px;
+}
+.no_food_left {
+    background-color: #D43308;
+    height: 100%;
+    width: 90px; 
+}
+
+.no_left_day_div_left {
+    padding-top: 5px;
+    padding-left: 8px;
+    color: white;
+    font-size:34px;
+}
+
+.no_left_day_div_right .day {
+    font-size: 12px;
+    color: white;
+}
+
+.no_left_day_div > div {
+    display: inline-block;
+}
+.food_item .image_v {
+    width: 165px;
+    height: 165px;
+    float:right;
+    vertical-align: bottom;
+}
+.left_day_div {
+    padding-left: 8px;
+    padding-top: 5px;
+}
+.left_day_div_left {
+    font-size: 34px;
+    color: white;
+}
+.left_day_div_right .day {
+    color: white;
+    font-size: 12px;
+}
+.left_day_div > div {
+    display: inline-block;
+    vertical-align: top;
 }
 .choose_fridge_and_foodtype > div ,.food_type_list > div {
     display: inline-block;
 }
 
+.food_name, .food_weight {
+    color: #361753;
+    font-size: 22px;
+    padding: 10px 0 0 8px;
+}
+
+.no_food_left .food_name, .no_food_left .food_weight {
+     color: white;
+}
+.food_weight {
+    font-size: 17px;
+    padding-top: 4px;
+}
+
+.food_right {
+    border: 0px solid black;
+    float: right;
+    position: absolute;
+    right: 0;
+    top:0;
+}
+
+.cycle {
+    font-size: 8px;
+    padding-top: 18px;
+    padding-right: 23px;
+    padding-bottom: 30px;
+    text-align: right;
+    color: #7C4C97;
+}
+.no_eat {
+    margin-top: 80px;
+    padding-left: 10px;
+}
+.no_eat img {
+    vertical-align: top;
+}
+.no_eat >div  {
+    display: inline-block;
+    vertical-align: top;
+}
+.no_eat_title {
+    color: white;
+    font-size: 10px;
+}
 .food_type_list {
     float: right;
     cursor: pointer;
@@ -104,23 +342,68 @@
 }
 
 .menu_list {
-    height: 60px;
-    background: -webkit-gradient(linear, 0 0, 100% 0, from(#2B3946), to(#334456));
-    color: #AEC6E0;
-    line-height: 60px;
-    font-size: 2em;
-    color: #AEC6E0;
+    height: 38px;
+    background-image: url("../images/1/导航栏背景图.png");
+    background-position:  -2px -2px;
+    color: #9B10A5;
+    line-height: 40px;
+    font-size: 18px;
     cursor: pointer;
+    padding: 0 85px 0 85px;
+}
+.menu_list img {
+    height: 20px;
+}
+
+.manage_menu_on {
+    background-image: url("../images/1/食材管理(亮).png") !important;
+    background-repeat: no-repeat;
+    background-position: 10px 0px !important;
+}
+.manage_menu_off {
+    background-image: url("../images/1/食材管理(暗).png");
+    background-repeat: no-repeat;
+    background-position: 18px 8px;
+}
+.mall_menu_on {
+    background-image: url("../images/1/在线生鲜(亮).png") !important;
+    background-repeat: no-repeat;
+    background-position: 10px 0px !important;
+}
+.mall_menu_off {
+    background-image: url("../images/1/在线生鲜(暗).png");
+    background-repeat: no-repeat;
+    background-position: 18px 8px;
+}
+.cookbook_menu_on {
+    background-image: url("../images/1/菜谱推送(亮).png") !important;
+    background-repeat: no-repeat;
+    background-position: 10px 0px !important;
+}
+.cookbook_menu_off {
+    background-image: url("../images/1/菜谱推送(暗).png");
+    background-repeat: no-repeat;
+    background-position: 18px 8px;
+}
+.manage_menu  img {
+    height: 20px;
+}
+
+.manage_menu {
+
+}
+.mall_menu , .cookbook_menu {
+    height: 20px;
 }
 
 .menu_list_click, .food_type_choose {
     color: white;
 }
 .menu_list_click {
-    border-bottom: 2px white solid;
+    border-bottom: 0px white solid;
 }
 .food_type_choose {
-    border: 2px solid white;
+    border: 0px solid white;
 }
 .middle-menu > div  {
     display: inline-block;
@@ -321,4 +604,24 @@
 .cart_intro_title {
     font-size: 2em;
     display: block;
+}
+
+.food_vew_footer {
+    float: right;
+    width: 100%;
+    padding: 14px 15px 0 15px;
+}
+.food_page_item {
+    margin-left: 15px;
+    float: right;
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 2px solid  #9706A1;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.food_page_item_choose {
+    background-color: #9706A1;
 }
