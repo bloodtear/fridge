@@ -125,90 +125,20 @@ $(document).ready(function() {
                 "5": "晋菜",
             },
             cookbook_type: 0,
+            cookbook_id: 1,
+            page_cookbook_list : [1,1,1,1,1],
             cookbook_list: {
-                0: {
-                    1: {
-                       id: 1,
-                       name: "口水鸡",
-                       material: "土鸡 花生 湘菜 独蒜 花椒",
-                       diffculty: "初级",
-                       skill: "炖",
-                       time: "30-60分钟",
-                       image_src: "images/koushuiji.png",
-                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
-                    },
-                    2: {
-                       id: 2,
-                       name: "口水鸡2",
-                       material: "土鸡 花生 湘菜 独蒜 花椒",
-                       diffculty: "初级",
-                       skill: "炖",
-                       time: "30-60分钟",
-                       image_src: "images/koushuiji.png",
-                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
-                    },
-                    3: {
-                       id: 3,
-                       name: "口水鸡3",
-                       material: "土鸡 花生 湘菜 独蒜 花椒",
-                       diffculty: "初级",
-                       skill: "炖",
-                       time: "30-60分钟",
-                       image_src: "images/koushuiji.png",
-                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
-                    },
-                    4: {
-                       id: 4,
-                       name: "口水鸡4",
-                       material: "土鸡 花生 湘菜 独蒜 花椒",
-                       diffculty: "初级",
-                       skill: "炖",
-                       time: "30-60分钟",
-                       image_src: "images/koushuiji.png",
-                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
-                    },
-                },
                 1: {
-                    1: {
-                       id: 1,
-                       name: "口水鸡",
-                       material: "土鸡 花生 湘菜 独蒜 花椒",
-                       diffculty: "初级",
-                       skill: "炖",
-                       time: "30-60分钟",
-                       image_src: "images/koushuiji.png",
-                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
-                    },
-                    2: {
-                       id: 2,
-                       name: "口水鸡2",
-                       material: "土鸡 花生 湘菜 独蒜 花椒",
-                       diffculty: "初级",
-                       skill: "炖",
-                       time: "30-60分钟",
-                       image_src: "images/koushuiji.png",
-                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
-                    },
-                    3: {
-                       id: 3,
-                       name: "口水鸡3",
-                       material: "土鸡 花生 湘菜 独蒜 花椒",
-                       diffculty: "初级",
-                       skill: "炖",
-                       time: "30-60分钟",
-                       image_src: "images/koushuiji.png",
-                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
-                    },
-                    4: {
-                       id: 4,
-                       name: "口水鸡4",
-                       material: "土鸡 花生 湘菜 独蒜 花椒",
-                       diffculty: "初级",
-                       skill: "炖",
-                       time: "30-60分钟",
-                       image_src: "images/koushuiji.png",
-                       description: "详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法详细做法",
-                    },
+                   id: 1,
+                   name: "西红柿炒鸡蛋",
+                   user_num: "1-2人",
+                   material: "鸡蛋 西红柿 葱花",
+                   diffculty: "新手尝试",
+                   skill: "炒",
+                   time: "30-60分钟",
+                   image_src: "images/3/图片-2.png",
+                   description: "菜如其名，番茄炒蛋，就是红红的番茄配上嫩黄蓬松的鸡蛋，隔上简单的配料和佐料，炒好后在撒上几粒碧绿的葱花，红亮亮黄灿灿的颜色，顿时让人食欲大开",
+                   intruction: "菜如其名，番茄炒蛋，就是红红的番茄配上嫩黄蓬松的鸡蛋，隔上简单的配料和佐料，炒好后在撒上几粒碧绿的葱花，红亮亮黄灿灿的颜色，顿时让人食欲大开",
                 },
             },
             mall_type_list: {
@@ -312,7 +242,7 @@ $(document).ready(function() {
             close_view_food: function () {
                 true_main_div.food_view = false;
             },
-            close_view_cookbook: function () {
+            close_cb_v_icon: function () {
                 true_main_div.cook_book_view = false;
             },
             close_view_cart: function () {
@@ -341,6 +271,10 @@ $(document).ready(function() {
                 true_main_div.view_cart_list_detail = true;
             },
             back_view_cart: function () {
+                if (true_main_div.view_cart_list_detail_flag == 2) {
+                    true_main_div.view_cart_list_detail = false;
+                    return;
+                }
                 true_main_div.view_cart_list_detail_flag = 0;
                 true_main_div.view_cart_list_detail = true;
             },

@@ -79,11 +79,11 @@
 
     <div class='menu_list box'>
         <div class='item text-center menu_btn manage_menu_off' v-on:click="change_main_flag" v-bind:class="{manage_menu_on : main_flag == 0}" v-bind:main_flag='0'></div>
-        
         <div class='item text-center menu_btn mall_menu_off' v-on:click="change_main_flag" v-bind:main_flag='1' v-bind:class="{mall_menu_on : main_flag == 1}" ></div>
         <div class='item text-center menu_btn cookbook_menu_off' v-on:click="change_main_flag" v-bind:main_flag='2' v-bind:class="{cookbook_menu_on : main_flag == 2}" ></div>
-    </div><div class='true_main_div_body'>
+    </div>
     
+    <div class='true_main_div_body'>
     <div v-if="main_flag == 0" class=''>
         <div class='food_list'>
             <div class='food_item' v-for="food_id in food_page_list[food_page]" v-on:click="view_food" v-bind:food_id="food_id">
@@ -314,38 +314,43 @@
                 <div class='finger_intro2'>科技点亮智慧生活</div>
             </div>
         </div>
-
     </div>
 
-        <div v-else-if="main_flag == 2" class=''>
-            <div class='cookbook_type_list'>
-                <div class='cb_type' v-for="(cb_type, cbid) in cookbook_types"  v-bind:cb_type='cbid' v-bind:class="{cookbook_type_choose: cookbook_type == cbid}" v-on:click="choose_cookbook_type"  >
-                {{cb_type}}
+    <div v-else-if="main_flag == 2" class=''>
+        <div class='cookbook_show_list'>
+            <div class='cookbook_show' v-on:click="view_cook_book" v-for="cid in page_cookbook_list">
+                <img class='cookbook_image in_line' v-bind:src="cookbook_list[cid].image_src"/><div class='cookbook_detail in_line'>
+                    <div class='cb_name'><b>{{cookbook_list[cid].name}}</b></div>
+                    <div class='cb_detail_list'>
+                        <b><div class='cb_detail_row box'>
+                            <div class='cb_diffculty inline_flex item '>制作难度：{{cookbook_list[cid].diffculty}}</div>
+                            <div class='cb_user_num inline_flex item '>用餐人数：{{cookbook_list[cid].user_num}}</div>
+                        </div>
+                        <div class='cb_detail_row box'>
+                            <div class='cb_time in_line item '>烹饪时间：{{cookbook_list[cid].time}}</div>
+                            <div class='cb_skill in_line item '>烹饪途径：{{cookbook_list[cid].skill}}</div>
+                        </div></b>
+                    </div>
+                    <div class='cb_description'>{{cookbook_list[cid].description}}</div>
                 </div>
             </div>
-            <div class='cookbook_show_list'>
-                <div class='cookbook_show' v-bind:descrpition="cookbook.description" v-on:click="view_cook_book" v-for="(cookbook, cid) in cookbook_list[cookbook_type]">
-                    <div class='cookbook_image'>
-                        <img v-bind:src="cookbook.image_src"/>
-                    </div>
-                    <div class='cookbook_detail'>
-                        <div class='cb_name'>{{cookbook.name}}</div>
-                        <div class='cb_material'>{{cookbook.material}}</div>
-                        <div class='cb_diffculty'>{{cookbook.diffculty}}</div>
-                        <div class='cb_skill'>{{cookbook.skill}}</div>
-                        <div class='cb_time'>{{cookbook.time}}</div>
-                    </div>
-                </div>
-                
-                <div v-if="cook_book_view == true" class='view_cookbook'>
+            <div class='cookbook_footer'></div>
+            <div v-if="cook_book_view == true" class='view_cookbook'>
+                <div class='view_cookbook_div'>
                     <div class='cook_book_descrpition'>
-                        <div>{{cook_book_description}}</div>
-                        <div class='btn btn-default close_cookbook_view_btn' v-on:click="close_view_cookbook">确定</div>
+                        <div class='view_cart_list_detail_div'>
+                            <div class='text-center cart_list_detail_title'>{{cookbook_list[cookbook_id].name}}</div><div v-on:click="close_cb_v_icon" class='close_cb_v_icon'><img src='images/2/弹出1/关闭.png'/></div>
+                        </div>
+                        <div class='line_w'></div>
+                        <div class='cook_intruction'>
+                            <div class='cook_intruction_text'>{{cookbook_list[cookbook_id].intruction}}</div>
+                        </div>
                     </div>
                 </div>
-                
             </div>
+            
         </div>
+    </div>
     
     </div>
     

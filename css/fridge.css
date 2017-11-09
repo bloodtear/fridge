@@ -431,16 +431,10 @@ body{
 }
 
 .cook_book_descrpition {
-    position: fixed;
-    top:0;
-    left:0;
-    z-index: 999;
-    width: 400px;
-    height: 400px;
-    background-color: white;
+
 }
 
-.view_cart_list_detail {
+.view_cart_list_detail, .view_cookbook {
     position: fixed;
     top: 10px;
     left: 40px;
@@ -757,17 +751,39 @@ body{
     color: white;
     background-color: #AEC6E0;
 }
-
-.cookbook_show  > div{
-    display: inline-block;
+.cookbook_show {
+    border: 2px solid #7E268B;
+    margin: 9px 13px 9px 13px;
+    height: 180px;
 }
-
+.cookbook_image{
+    height: 175px;
+    width: 335px;
+    vertical-align: top;
+}
 
 .cookbook_detail {
-    color: #AEC6E0;
+    padding-left: 18px;
+    padding-top: 16px;
+    color: #3E205A;
+    width: 400px;
+    font-size: 15px;
+}
+.cb_description {
+    white-space:normal; word-break:break-all;
+    font-size: 11px;
 }
 .cb_name, .footer_right_icon {
-    color: white;
+    color: #D43308;
+    font-size: 25px;
+}
+
+.cb_detail_list {
+    padding-top: 4px;
+}
+
+.cb_description {
+    padding-top: 4px;
 }
 
 .footer_div > div{
@@ -777,6 +793,12 @@ body{
     background-color: : #AEC6E0;
     padding: 15px;
     color: white;
+}
+
+.cookbook_footer {
+    background-image: url("../images/3/底部背景.png");
+    background-position: 0px -1245px;
+    height: 121px;
 }
 
 .mall_intro{
@@ -925,11 +947,21 @@ body{
     line-height: 104px;
     text-align: center;
 }
-.view_cart_list_detail_div {
+.view_cart_list_detail_div, .view_cookbook_div {
     position: relative;
 }
-
-.close_icon {
+.cook_intruction {
+    border: 1px solid;
+    margin-left: 45px;
+    margin-right: 45px;
+    height: 454px;
+    overflow-y: scroll;
+    background-color: white;
+}
+.cook_intruction_text{
+    padding: 16px;
+}
+.close_icon ,.close_cb_v_icon{
     position: absolute;
     right: 14px;
     top:18px;
@@ -987,6 +1019,10 @@ body{
     display: block;
 }
 
+.inline_flex {
+    display: inline-flex;
+}
+
 .food_vew_footer {
     float: right;
     width: 100%;
@@ -1005,4 +1041,9 @@ body{
 
 .food_page_item_choose {
     background-color: #9706A1;
+}
+
+.cb_detail_row > div {
+    width: 110px;
+
 }
