@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css" type="text/css">
         <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="css/fridge.css">
+        <link rel="stylesheet" href="css/animate.css">
         <link rel="stylesheet" href="vendor/jquery-ui-1.12.1/jquery-ui.min.css">
         <link rel="stylesheet" href="vendor/jquery-ui-1.12.1/jquery-ui.theme.min.css">
         <link rel="stylesheet" href="vendor/jquery-ui-1.12.1/jquery-ui.structure.min.css">
@@ -16,6 +17,15 @@
         <script src="vendor/jquery-ui-1.12.1/jquery-ui.min.js"></script>
         <script src="vendor/vue/vue.js"></script>
         <script src="js/fridge.js"></script>
+        
+        <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.api.min.js"></script>
+        <script type="text/javascript">
+           $youziku.load("body", "6fb44d63bc604510bc3f4b9f2aeb53a1", "PingFangSC_R");
+           /*$youziku.load("#id1,.class1,h1", "6fb44d63bc604510bc3f4b9f2aeb53a1", "PingFangSC_R");*/
+           /*．．．*/
+           $youziku.draw();
+        </script>
+        
         <title> 智能冰箱 </title>
     </head>
 <body>
@@ -69,6 +79,7 @@
             <marquee behavior="scroll" contenteditable="true" onstart="this.firstChild.innerHTML+=this.firstChild.innerHTML;" scrollamount="3" width="" onmouseover="this.stop();" onmouseout="this.start();"> 
              HI， 早上好，美好的早餐会让您活力充沛一整天 
             </marquee>
+            
         </div>
 
     </div>
@@ -118,7 +129,7 @@
                     <div class='food_name'>{{food_list[food_id].name}}</div>
                     <div class='food_weight'>{{food_list[food_id].weight}}千克</div>
                     <div class='no_eat'>
-                        <div><img src='!images/1/已经过期2.png'/></div>
+                        
                         <!--<div><img src='images/1/白色叹号icon.png'/>
                         </div>
                         <div class='no_eat_title'>已经过期<br>请勿食用

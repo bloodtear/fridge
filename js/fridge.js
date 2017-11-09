@@ -19,6 +19,15 @@ $(document).ready(function() {
             now_time: now_time,
             temperature: 4,
             rate: 35,
+            show: 1,
+            items: [
+                { name: 0 },
+                { name: 1 },
+                { name: 2 },
+                { name: 3 },
+                { name: 4 }
+            ],
+            activeIndex: 0
         }
     })
     
@@ -279,7 +288,7 @@ $(document).ready(function() {
                 true_main_div.view_cart_list_detail = true;
             },
             make_order: function () {
-                if (true_main_div.cart_good_list == 0) {
+                if (true_main_div.cart_good_list.length == 0) {
                     return;
                 }
                 true_main_div.view_cart_list_detail_flag = 1;
@@ -288,6 +297,8 @@ $(document).ready(function() {
             finger_click: function() {
                 true_main_div.view_cart_list_detail_flag = 2;
                 true_main_div.view_cart_list_detail = true;
+                true_main_div.cart_good_list = [];
+                true_main_div.refresh_good_list();
             }
         },
     });

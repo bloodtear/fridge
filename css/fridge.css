@@ -1,8 +1,8 @@
 @font-face {
     /* font-properties */
     font-family: pingfang;
-    src:url('../../ttf/苹方黑体-纤细-简.ttf'),
-    url('../../ttf/苹方黑体-纤细-简.ttf');
+    src:url('../../ttf/pingfang.ttf'),
+    url('../../ttf/pingfang.ttf');
     /*url('pictos/pictos-web.eot');  IE9 */
 }
 
@@ -14,7 +14,7 @@ body{
 .main-wrapper {
     height: 1366px;
     width: 768px;
-    font-family: 'pingfang';
+    !font-family: 'pingfang';
 }
 
 .header-wrapper {
@@ -286,6 +286,9 @@ body{
 .left_day_div_right .day {
     color: white;
     font-size: 12px;
+}
+.left_day_div_right{
+    margin-top: 5px;
 }
 .left_day_div > div {
     display: inline-block;
