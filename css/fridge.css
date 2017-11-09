@@ -1,12 +1,14 @@
 @font-face {
     /* font-properties */
     font-family: pingfang;
-    src:url('ttf/苹方黑体-纤细-简.ttf'),
-    url('ttf/苹方黑体-纤细-简.ttf');
+    src:url('../../ttf/苹方黑体-纤细-简.ttf'),
+    url('../../ttf/苹方黑体-纤细-简.ttf');
     /*url('pictos/pictos-web.eot');  IE9 */
 }
 
-
+body{
+    overflow: hidden;
+}
 
 .main-wrapper {
     height: 1366px;
@@ -784,8 +786,11 @@
     background-color: #C708D4;
     color: white;
     height: 104px;
-    line-height: 60px;
-    width: 150px;
+    width: 155px;
+    vertical-align: top;
+    font-size: 27px;
+    line-height: 104px;
+    text-align: center;
 }
 
 
