@@ -442,6 +442,7 @@ body{
 }
 
 .view_cart_list_detail, .view_cookbook {
+
     position: fixed;
     top: 10px;
     left: 40px;
@@ -1068,4 +1069,11 @@ body{
     line-height: 38px;
     text-align: center;
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
+  opacity: 0
 }

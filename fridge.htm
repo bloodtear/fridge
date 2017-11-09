@@ -149,6 +149,7 @@
                 </div>
             </div>
         </div>
+        <transition name="fade">
         <div v-if="food_view == true" class='view_food'>
             <div class='food_detail'>
                 <div class='food_detail_header'>
@@ -247,8 +248,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
+        </transition>
         <div class='food_vew_footer'>
             <div class='food_page_item' v-on:click="choose_food_page"  v-bind:page_id="page_id"  v-bind:class="{food_page_item_choose: food_page == page_id}" v-for="page_id in food_page_icons">
             </div>
@@ -296,7 +297,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <transition name="fade">
         <div v-if="view_cart_list_detail == true" class='view_cart_list_detail'>
             <div class='view_cart_list_detail_div'>
                 <div class='text-center cart_list_detail_title'>订单确认</div><div v-on:click="close_view_cart" class='close_icon'><img src='images/2/弹出1/关闭.png'/></div><div v-if="view_cart_list_detail_flag > 0" v-on:click="back_view_cart" class='back_icon'><img src='images/2/弹出2/返回图标-icon.png'/></div>
@@ -331,6 +333,7 @@
                 <div class='finger_intro2'>科技点亮智慧生活</div>
             </div>
         </div>
+        </transition>
     </div>
 
     <div v-else-if="main_flag == 2" class=''>
@@ -352,6 +355,7 @@
                 </div>
             </div>
             <div class='cookbook_footer'></div>
+            <transition name="fade">
             <div v-if="cook_book_view == true" class='view_cookbook'>
                 <div class='view_cookbook_div'>
                     <div class='cook_book_descrpition'>
@@ -365,6 +369,7 @@
                     </div>
                 </div>
             </div>
+            </transition>
             
         </div>
     </div>
