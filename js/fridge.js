@@ -20,15 +20,31 @@ $(document).ready(function() {
             temperature: 4,
             rate: 35,
             show: 1,
-            items: [
-                { name: 0 },
-                { name: 1 },
-                { name: 2 },
-                { name: 3 },
-                { name: 4 }
+            items: {
+                1:{ id:1, text: "111"},
+                2:{ id:2, text: "222"},
+                3:{ id:3, text: "333"},
+            },
+            activeIndex: 0,
+            prizeList: [
+                { name: "HI， 早上好，美好的早餐会让您活力充沛一整天" },
+                { name: "更具冰箱中储存的食材，为您推荐菜单" },
             ],
-            activeIndex: 0
-        }
+        },
+        computed: {
+            top() {
+              return - this.activeIndex * 38 + 'px';
+            }
+        },
+        mounted() {
+            setInterval(_ => {
+              if(this.activeIndex < this.prizeList.length) {
+                this.activeIndex += 1;
+              } else {
+                this.activeIndex = 0;
+              }
+            }, 15000);
+        },
     })
     
     

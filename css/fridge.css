@@ -1050,3 +1050,18 @@ body{
     width: 110px;
 
 }
+
+.scroll-wrap{
+  height: 38px;
+  overflow: hidden;
+}
+
+.scroll-content{
+  position: relative;
+  transition: top 0.5s;
+
+  .div_content{
+    line-height: 38px;
+    text-align: center;
+  }
+}

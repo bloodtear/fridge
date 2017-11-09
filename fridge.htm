@@ -76,9 +76,15 @@
         </div>
     
         <div class='hello_word'>
-            <marquee behavior="scroll" contenteditable="true" onstart="this.firstChild.innerHTML+=this.firstChild.innerHTML;" scrollamount="3" width="" onmouseover="this.stop();" onmouseout="this.start();"> 
+            <!--<marquee behavior="scroll" contenteditable="true" onstart="this.firstChild.innerHTML+=this.firstChild.innerHTML;" scrollamount="3" width="" onmouseover="this.stop();" onmouseout="this.start();"> 
              HI， 早上好，美好的早餐会让您活力充沛一整天 
-            </marquee>
+            </marquee>-->
+                        
+            <div class="scroll-wrap">
+                <div class="scroll-content" :style="{ top }">
+                    <div class='div_content' v-for="item in prizeList">{{item.name}}</div > 
+                </div>
+            </div>
             
         </div>
 
