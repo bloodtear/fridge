@@ -636,6 +636,16 @@ body{
     overflow-y: scroll; 
 }
 
+.no_order_good_list{
+    border: 0px solid;
+    margin: 0 45px 0 45px;
+    height: 280px;
+    line-height: 280px;
+    text-align: center;
+    font-size: 27px;
+    color: white;
+}
+
 .order_good_item {
     width:280px;
     border: 1px solid;
@@ -668,6 +678,12 @@ body{
 }
 .finger_icon {
     margin-top: 90px;
+}
+.good_detail_s {
+    padding-top: 4px;
+}
+.good_detail_s .good_name{
+    font-size: 14px;
 }
 .finger_intro1 {
     margin-top: 42px;

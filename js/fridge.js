@@ -345,6 +345,9 @@ $(document).ready(function() {
                 true_main_div.view_cart_list_detail = true;
             },
             make_order: function () {
+                if (true_main_div.cart_good_list == 0) {
+                    return;
+                }
                 true_main_div.view_cart_list_detail_flag = 1;
                 true_main_div.view_cart_list_detail = true;
             },
