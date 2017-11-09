@@ -244,61 +244,42 @@
     </div>
 
         <div v-else-if="main_flag == 1" class=''>
-            <div class='mall_intro box'>
-                <div class=''>
-                    <img src='images/circle.png'/>
-                </div>
-                <div class=''>
-                    采购市场
-                </div>
-            </div>
             <div class='mall_type_list box'>
-                <div class='mall_type box item ' v-on:click="choose_mall_type" v-bind:class="{mall_type_choose: mall_type_id == mall_id}" v-for="(mall_type, mall_id) in mall_type_list" v-bind:mall_id='mall_id' >
+                <div class='mall_type in_line_box item ' v-on:click="choose_mall_type" v-bind:class="{mall_type_choose: mall_type_id == thiz_type_id}" v-for="(mall_type, thiz_type_id) in mall_type_list" v-bind:mall_type_id='thiz_type_id' >
                     {{mall_type}}
                 </div>
             </div>
-            <div class='filter_market_brand'>
-                <div class=''>
-                    <div class=' market_intro'>超市：</div>
-                    <div class='market_list ' v-on:click="choose_market"  v-bind:class="{market_choosed: choose_market_id == market_id}"  v-for="(market_name, market_id) in market_list"  v-bind:market_id='market_id' >
-                        {{market_name}}
-                    </div>
-                </div>
-                <div class=''>
-                    <div class='brand_intro'>品牌：</div>
-                    <div class='brand_list ' v-on:click="choose_brand"  v-bind:class="{brand_choosed: choose_brand_id == brand_id}"  v-for="(brand_name, brand_id) in brand_list"  v-bind:brand_id='brand_id' >
-                        {{brand_name}}
-                    </div>
-                </div>
-            </div>
             <div class='good_list'>
-                <div class='good_item' v-for="(good, good_id) in good_list">
-                    <div>
-                        <img v-bind:src="good.image_src" />
+                <div class='good_item' v-for="good_id in food_list_by_type[mall_type_id]">
+                    <div class='center-block'><img class='center-block' v-bind:src="good_list[good_id].image_src" />
                     </div>
-                    <div class='good_name'>{{good.name}}</div>
-                    <div class='good_footer'>
-                        <div class=''>
-                            <div class=''>{{good.market}}</div>  
-                            <div class=''>{{good.price}}</div>
+                    <div class='good_detail'>
+                        <div class='good_price'>
+                             ￥{{good_list[good_id].price}}
                         </div>
-                        <div class='fa fa-cart-plus cart_btn fa-2x' v-on:click="add_good" v-bind:good_id="good.id">
-                            
+                        <div class=''>
+                            <div class='in_line'>
+                                <div class='good_name'>{{good_list[good_id].name}}</div>
+                                <div class='good_market'><span><img src='images/2/商家店铺图标-icon.png'/></span>{{good_list[good_id].market}}</div>
+                            </div>
+                            <div class='in_line cart_icon'>
+                                <img src='images/2/购物车-icon.png' />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class='cart_div'>
                 <div class='cart_status_show'>
-                    <div class='show_cart_list_detail' v-on:click="show_cart_list_detail">去结算</div>
-                    <div class='cart_intro'>
+                    <div class='show_cart_list_detail in_line' v-on:click="show_cart_list_detail">去结算</div>
+                    <div class='cart_intro in_line'>
                         <div class='cart_intro_title'>购物清单</div><br>
                         <div class='cart_intro_time'><span class='fa fa-clock-o'></span><span>预计47分钟后送达</span></div>
                     </div>
-                    <div class='total_count'>
+                    <div class='total_count in_line'>
                         <div>{{total_count}}</div>
                     </div>
-                    <div class='total_price'>
+                    <div class='total_price in_line'>
                         ￥：<div>{{total_price}}</div>
                     </div>
                 </div>

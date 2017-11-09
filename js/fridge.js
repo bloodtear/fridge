@@ -36,9 +36,9 @@ $(document).ready(function() {
             view_cart_list_detail: false,
             cook_book_descrpition: "",
             food_page_list: {
-                0: [1,1,1,1,2,3,1,1,1],
-                1: [1,2,1,1,1,1,1,1,1],
-                2: [1,3,1,1,2,3,1,2,3],
+                0: [1,1,1,1,2,3,1,1,1,2,3,2],
+                1: [1,2,1,1,1,1,1,1,1,1,2,1],
+                2: [1,3,1,1,2,3,1,2,3,3,1,2],
             },
             food_page_icons: [0, 1, 2],
             food_list: {
@@ -219,9 +219,13 @@ $(document).ready(function() {
                 5: "干货调料",
             },
             mall_type_id: 0,
-            market_list:{
-                0: "XXX超市",
-                1: "YYY超市",
+            food_list_by_type: {
+                0: [1,1,1,1,2,1,1,1,1,],
+                1: [1,2,1,1,1,1,1,1,1,],
+                2: [1,1,1,1,2,2,1,2,2,],
+                3: [1,1,1,1,2,1,1,2,2,],
+                4: [1,2,1,1,2,2,1,2,1,],
+                5: [2,1,1,1,2,2,1,2,1,],
             },
             choose_market_id: 0,
             brand_list:{
@@ -234,38 +238,17 @@ $(document).ready(function() {
             good_list: {
                 1: {
                     id:1,
-                    name: "太古白菜",
-                    market: "XX超市",
+                    name: "每日坚果混合坚果仁",
+                    market: "洪湖农家旗舰店",
                     price: "5.60",
-                    image_src: "images/cabbage",
+                    image_src: "images/2/商品-水果.png",
                 },
                 2: {
                     id:2,
-                    name: "太古白菜",
-                    market: "XX超市",
+                    name: "每日坚果混合坚果仁",
+                    market: "洪湖农家旗舰店",
                     price: "5.60",
-                    image_src: "images/cabbage",
-                },
-                3: {
-                    id:3,
-                    name: "太古白菜",
-                    market: "XX超市",
-                    price: "5.60",
-                    image_src: "images/cabbage",
-                },
-                4: {
-                    id:4,
-                    name: "太古白菜",
-                    market: "XX超市",
-                    price: "5.60",
-                    image_src: "images/cabbage",
-                },
-                5: {
-                    id:5,
-                    name: "太古白菜",
-                    market: "XX超市",
-                    price: "5.60",
-                    image_src: "images/cabbage",
+                    image_src: "images/2/坚果.png",
                 },
             },
             cart_good_list: [],
@@ -294,9 +277,9 @@ $(document).ready(function() {
             },
             choose_mall_type: function (event) {
                 var target = event.currentTarget;
-                var mall_id = $(target).attr("mall_id");
-                console.log(mall_id);
-                true_main_div.mall_type_id = mall_id;
+                var mall_type_id = $(target).attr("mall_type_id");
+                console.log(mall_type_id);
+                true_main_div.mall_type_id = mall_type_id;
             },
             choose_market: function (event) {
                 var target = event.currentTarget;
