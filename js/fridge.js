@@ -38,12 +38,12 @@ $(document).ready(function() {
         },
         mounted() {
             setInterval(_ => {
-              if(this.activeIndex < this.prizeList.length) {
+              if(this.activeIndex < this.prizeList.length - 1) {
                 this.activeIndex += 1;
               } else {
                 this.activeIndex = 0;
               }
-            }, 15000);
+            }, 3000);
         },
     })
     
