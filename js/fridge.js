@@ -35,6 +35,7 @@ $(document).ready(function() {
             cook_book_view: false,
             view_cart_list_detail: false,
             cook_book_descrpition: "",
+            view_cart_list_detail_flag: 0,
             food_page_list: {
                 0: [1,1,1,1,2,3,1,1,1,2,3,2],
                 1: [1,2,1,1,1,1,1,1,1,1,2,1],
@@ -251,6 +252,7 @@ $(document).ready(function() {
                     image_src: "images/2/坚果.png",
                 },
             },
+            //cart_good_list: [1,2,2,1,2,1,2,1,],
             cart_good_list: [],
         },
 
@@ -335,6 +337,19 @@ $(document).ready(function() {
             },
             show_cart_list_detail: function () {
                 console.log(true_main_div.cart_good_list);
+                true_main_div.view_cart_list_detail_flag = 0;
+                true_main_div.view_cart_list_detail = true;
+            },
+            back_view_cart: function () {
+                true_main_div.view_cart_list_detail_flag = 0;
+                true_main_div.view_cart_list_detail = true;
+            },
+            make_order: function () {
+                true_main_div.view_cart_list_detail_flag = 1;
+                true_main_div.view_cart_list_detail = true;
+            },
+            finger_click: function() {
+                true_main_div.view_cart_list_detail_flag = 2;
                 true_main_div.view_cart_list_detail = true;
             }
         },

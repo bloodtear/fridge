@@ -238,58 +238,84 @@
         </div>
     </div>
 
-        <div v-else-if="main_flag == 1" class=''>
-            <div class='mall_type_list box'>
-                <div class='mall_type in_line_box item ' v-on:click="choose_mall_type" v-bind:class="{mall_type_choose: mall_type_id == thiz_type_id}" v-for="(mall_type, thiz_type_id) in mall_type_list" v-bind:mall_type_id='thiz_type_id' >
-                    {{mall_type}}
-                </div>
+    <div v-else-if="main_flag == 1" class=''>
+        <div class='mall_type_list box'>
+            <div class='mall_type in_line_box item ' v-on:click="choose_mall_type" v-bind:class="{mall_type_choose: mall_type_id == thiz_type_id}" v-for="(mall_type, thiz_type_id) in mall_type_list" v-bind:mall_type_id='thiz_type_id' >
+                {{mall_type}}
             </div>
-            <div class='good_list'>
-                <div class='good_item' v-for="good_id in food_list_by_type[mall_type_id]">
-                    <div class='center-block'><img class='center-block' v-bind:src="good_list[good_id].image_src" />
-                    </div>
-                    <div class='good_detail'>
-                        <div class='good_price'>
-                             ￥{{good_list[good_id].price}}
-                        </div>
-                        <div class=''>
-                            <div class='in_line'>
-                                <div class='good_name'>{{good_list[good_id].name}}</div>
-                                <div class='good_market'><span><img src='images/2/商家店铺图标-icon.png'/></span>{{good_list[good_id].market}}</div>
-                            </div>
-                            <div class='in_line cart_icon'>
-                                <img src='images/2/购物车-icon.png' />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class='cart_div'>
-                <div class='cart_status_show'>
-                    <div class='show_cart_list_detail in_line' v-on:click="show_cart_list_detail">去结算</div>
-                    <div class='cart_intro in_line'>
-                        <div class='cart_intro_title'>购物清单</div><br>
-                        <div class='cart_intro_time'><span class='fa fa-clock-o'></span><span>预计47分钟后送达</span></div>
-                    </div>
-                    <div class='total_count in_line'>
-                        <div>{{total_count}}</div>
-                    </div>
-                    <div class='total_price in_line'>
-                        ￥：<div>{{total_price}}</div>
-                    </div>
-                </div>
-            </div>
-
-            <div v-if="view_cart_list_detail == true" class='view_cart_list_detail'>
-                <div class='view_cart_list_detail'>
-                    <div class='btn btn-default close_view_cart' v-on:click="close_view_cart">确定</div>
-                </div>
-            </div>
-            
-        
-            
-
         </div>
+        <div class='good_list'>
+            <div class='good_item' v-for="good_id in food_list_by_type[mall_type_id]">
+                <div class='center-block'><img class='center-block' v-bind:src="good_list[good_id].image_src" />
+                </div>
+                <div class='good_detail'>
+                    <div class='good_price'>
+                         ￥{{good_list[good_id].price}}
+                    </div>
+                    <div class=''>
+                        <div class='in_line'>
+                            <div class='good_name'>{{good_list[good_id].name}}</div>
+                            <div class='good_market'><span><img src='images/2/商家店铺图标-icon.png'/></span>{{good_list[good_id].market}}</div>
+                        </div>
+                        <div class='in_line cart_icon' v-on:click="add_good" v-bind:good_id="good_id">
+                            <img src='images/2/购物车-icon.png' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='cart_div'>
+            <div class='cart_status_show'>
+                <div class='show_cart_list_detail in_line' v-on:click="show_cart_list_detail">去结算</div>
+                <div class='cart_intro in_line'>
+                    <div class='cart_intro_title'>购物清单</div>
+                    <div class='cart_intro_time'><img src='images/1/Clock.png'/><span>预计明天10点送达</span></div>
+                </div>
+                <div class='total_count in_line'>
+                    {{total_count}}
+                </div>
+                <div class='total_price in_line'>
+                    ￥{{total_price}}
+                </div>
+            </div>
+        </div>
+
+        <div v-if="view_cart_list_detail == true" class='view_cart_list_detail'>
+            <div class='view_cart_list_detail_div'>
+                <div class='text-center cart_list_detail_title'>订单确认</div><div v-on:click="close_view_cart" class='close_icon'><img src='images/2/弹出1/关闭.png'/></div><div v-if="view_cart_list_detail_flag > 0" v-on:click="back_view_cart" class='back_icon'><img src='images/2/弹出2/返回图标-icon.png'/></div>
+            </div>
+            <div class='line_w'></div>
+            <div class='order_header'>
+                <div class='in_line order_header_intro'>订单信息</div><div class='in_line order_express_time'><span><img src='images/1/Clock.png' /></span>您的订单将在明天10:00送达，请注意查收。</div>
+            </div>
+            <div class='' v-if="view_cart_list_detail_flag == 0">
+                <div class='order_good_list'>
+                    <div class='order_good_item in_line' v-for="good_id in cart_good_list">
+                        <img class='good_img in_line' v-bind:src="good_list[good_id].image_src"/>
+                        <div class='in_line'>
+                            <div class='good_price'> ￥{{good_list[good_id].price}}</div>
+                            <div class='good_name'>{{good_list[good_id].name}}</div>
+                            <div class='good_market'><span><img src='images/2/商家店铺图标-icon.png'/></span>{{good_list[good_id].market}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class='in_line total_price_intro'><span>合计金额: ￥</span>{{total_price}}</div><div class='in_line make_order' v-on:click="make_order">提交订单</div>
+                </div>
+            </div>
+            <div class='' v-else-if="view_cart_list_detail_flag == 1">
+                <div class='second_total_price_intro'><span>合计金额: ￥</span>{{total_price}}</div>
+                <img class='center-block finger_icon' v-on:click="finger_click" src='images/2/弹出2/指纹图标-icon.png'/>
+                <div class='finger_intro1'>请输入您Touch ID</div>
+                <div class='finger_intro2'>通过点按屏幕验证您的指纹</div>
+            </div>
+            <div class='' v-else-if="view_cart_list_detail_flag == 2">
+                <div class='finger_intro1'>商品购买成功</div>
+                <div class='finger_intro2'>科技点亮智慧生活</div>
+            </div>
+        </div>
+
+    </div>
 
         <div v-else-if="main_flag == 2" class=''>
             <div class='cookbook_type_list'>
