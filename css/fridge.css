@@ -227,8 +227,12 @@ body{
     padding: 30px;
 }
 
+.food_list {
+    padding-top: 10px;
+}
+
 .food_item {
-    margin: 10px 0 10px 8px;
+    margin: 0px 0 9px 8px;
     height: 245px;
     width: 245px;
     border: 2px solid #7E268B;
