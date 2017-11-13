@@ -11,17 +11,28 @@ $(document).ready(function() {
     console.log(now_time);
     
     var ws_url = '';
-    var ws = new WebSocket("ws://localhost:9998/echo");
+    var ws = new WebSocket("ws://localhost:60000/topic/refrigerator");
     ws.onopen = function() {
         ws.send("give me flag and temperature and rate !");
         console.log("give me flag and temperature and rate !");
     };
     ws.onmessage = function (evt) { 
         var received_msg = evt.data;
-        var server_temperature = received_msg.temperature;
-        var server_rate = received_msg.rate;
-        var server_mist_flag = received_msg.mist_flag;
-        console.log("received_msg:" + received_msg);
+        console.log(received_msg);
+        var operation = received_msg.operation;
+        if (operation == "TEMPERATURE") {
+            var server_temperature = received_msg.target;
+            header_wrapper.temperature = server_temperature;
+            return;
+        }
+        if (operation == "ON") {
+            black_mist.mist_flag = true;
+            return;
+        }
+        if (operation == "OFF") {
+            black_mist.mist_flag = false;
+            return;
+        }
       
     };
     ws.onclose = function(){ 
@@ -202,7 +213,7 @@ $(document).ready(function() {
                    skill: "炒",
                    time: "30-60分钟",
                    image_src: "images/3/图片-1.png",
-                   big_image_src: "images/3/图片-2.png",
+                   big_image_src: "../IMG_0491.PNG",
                    description: "菜如其名，番茄炒蛋，就是红红的番茄配上嫩黄蓬松的鸡蛋，隔上简单的配料和佐料，炒好后在撒上几粒碧绿的葱花，红亮亮黄灿灿的颜色，顿时让人食欲大开",
                    intruction: "菜如其名，番茄炒蛋，就是红红的番茄配上嫩黄蓬松的鸡蛋，隔上简单的配料和佐料，炒好后在撒上几粒碧绿的葱花，红亮亮黄灿灿的颜色，顿时让人食欲大开",
                 },
@@ -215,7 +226,7 @@ $(document).ready(function() {
                    skill: "炒",
                    time: "30-60分钟",
                    image_src: "images/3/图片-3.png",
-                   big_image_src: "images/3/图片-2.png",
+                   big_image_src: "../IMG_0549.JPG",
                    description: "菜如其名，番茄炒蛋，就是红红的番茄配上嫩黄蓬松的鸡蛋，隔上简单的配料和佐料，炒好后在撒上几粒碧绿的葱花，红亮亮黄灿灿的颜色，顿时让人食欲大开",
                    intruction: "菜如其名，番茄炒蛋，就是红红的番茄配上嫩黄蓬松的鸡蛋，隔上简单的配料和佐料，炒好后在撒上几粒碧绿的葱花，红亮亮黄灿灿的颜色，顿时让人食欲大开",
                 },
@@ -313,9 +324,9 @@ $(document).ready(function() {
             },
             view_cook_book: function (event) {
                 var target = event.currentTarget;
-                var description = $(target).attr("descrpition");
-                console.log(description);
-                true_main_div.cook_book_description = description;
+                var cookbook_id = $(target).attr("cookbook_id");
+                console.log(cookbook_id);
+                true_main_div.cookbook_id = cookbook_id;
                 true_main_div.cook_book_view = true;
             },
             close_view_food: function () {

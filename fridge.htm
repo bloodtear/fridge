@@ -338,7 +338,7 @@
 
     <div v-else-if="main_flag == 2" class=''>
         <div class='cookbook_show_list'>
-            <div class='cookbook_show' v-on:click="view_cook_book" v-for="cid in page_cookbook_list">
+            <div class='cookbook_show' v-on:click="view_cook_book" v-bind:cookbook_id="cid" v-for="cid in page_cookbook_list">
                 <img class='cookbook_image in_line' v-bind:src="cookbook_list[cid].image_src"/><div class='cookbook_detail in_line'>
                     <div class='cb_name'><b>{{cookbook_list[cid].name}}</b></div>
                     <div class='cb_detail_list'>
@@ -363,7 +363,7 @@
                             <div class='text-center cart_list_detail_title'>{{cookbook_list[cookbook_id].name}}</div><div v-on:click="close_cb_v_icon" class='close_cb_v_icon'><img src='images/2/弹出1/关闭.png'/></div>
                         </div>
                         <div class='line_w'></div>
-                        <div class='cook_intruction'>
+                        <div class='cook_intruction' :style="{backgroundImage: 'url(' + cookbook_list[cookbook_id].big_image_src + ')'}">
                             <div class='cook_intruction_text'>{{cookbook_list[cookbook_id].intruction}}</div>
                         </div>
                     </div>
