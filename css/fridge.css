@@ -116,7 +116,9 @@ body{
 
 .bar_3, .bar_2 {
     border-top: 4px solid #FFA200;
-
+}
+.bar_2 {
+    width: 66%;
 }
 .exclamation_icon {
     vertical-align: top;
