@@ -8,7 +8,7 @@
 
 body{
     /* 最后修改此项目 */
-    overflow: hidden;
+    !overflow: hidden;
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
@@ -16,6 +16,7 @@ body{
 }
 
 .main-wrapper {
+    position: relative;
     height: 1366px;
     width: 768px;
     !font-family: 'pingfang';
@@ -89,7 +90,7 @@ body{
 }
 
 .expired_food_item {
-    color: #BC05D8;
+    color: #FFDE00;
     font-size: 12px;
 }
 
@@ -114,7 +115,7 @@ body{
 }
 
 .bar_3, .bar_2 {
-    border-top: 4px solid #BC05D8;
+    border-top: 4px solid #FFA200;
 
 }
 .exclamation_icon {
@@ -127,7 +128,7 @@ body{
 }
 
 .expired_intro {
-    color: #C66CE1;
+    color: #FFDE00;
     font-size: 12px;
     padding-top: 8px;
     padding-bottom: 10px;
@@ -167,7 +168,7 @@ body{
 }
 
 .rate_intro, .temperature_intro {
-    color: #A12EB4;
+    color: #FFDE00;
 }
 
 .num_1 {
@@ -175,7 +176,7 @@ body{
     font-size: 46px;
 }
 .num_2{
-    color: #A12EB4;
+    color: #FFDE00;
     font-size: 18px;
     padding-left: 8px;
 }
@@ -366,7 +367,7 @@ body{
     height: 38px;
     background-image: url("../images/1/导航栏背景图.png");
     background-position:  -2px -2px;
-    color: #9B10A5;
+    color: white;
     line-height: 40px;
     font-size: 18px;
     cursor: pointer;
@@ -376,33 +377,37 @@ body{
     height: 20px;
 }
 
+.menu_list_choose {
+    color: #FFA200;
+}
+
 .manage_menu_on {
-    background-image: url("../images/1/食材管理(亮).png") !important;
+    background-image: url("../images/1/食材（黄）.png") !important;
     background-repeat: no-repeat;
-    background-position: 10px 0px !important;
+    background-position: 18px 7px !important;
 }
 .manage_menu_off {
-    background-image: url("../images/1/食材管理(暗).png");
+    background-image: url("../images/1/食材（白）.png");
     background-repeat: no-repeat;
-    background-position: 18px 8px;
+    background-position: 22px 7px;
 }
 .mall_menu_on {
-    background-image: url("../images/1/在线生鲜(亮).png") !important;
+    background-image: url("../images/1/在线（黄）.png") !important;
     background-repeat: no-repeat;
-    background-position: 10px 0px !important;
+    background-position: 14px 8px !important;
 }
 .mall_menu_off {
-    background-image: url("../images/1/在线生鲜(暗).png");
+    background-image: url("../images/1/在线（白）.png");
     background-repeat: no-repeat;
     background-position: 18px 8px;
 }
 .cookbook_menu_on {
-    background-image: url("../images/1/菜谱推送(亮).png") !important;
+    background-image: url("../images/1/菜谱（黄）.png") !important;
     background-repeat: no-repeat;
-    background-position: 10px 0px !important;
+    background-position: 14px 8px !important;
 }
 .cookbook_menu_off {
-    background-image: url("../images/1/菜谱推送(暗).png");
+    background-image: url("../images/1/菜谱（白）.png");
     background-repeat: no-repeat;
     background-position: 18px 8px;
 }
@@ -1080,4 +1085,13 @@ body{
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in below version 2.1.8 */ {
   opacity: 0
+}
+
+.black_mist {
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background-color: black;
+    position: absolute;
+    top: 0;
 }

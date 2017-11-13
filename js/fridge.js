@@ -1,16 +1,34 @@
 $(document).ready(function() {
     console.log("fridge page show ...");
     
-    
+    var mist = false;
     var timestamp = Date.parse(new Date());
     //timestamp = timestamp / 1000;
     now_date = format_date(timestamp);
     now_time = format_time(timestamp);
     
-    
     console.log(now_date);
     console.log(now_time);
     
+    var ws_url = '';
+    var ws = new WebSocket("ws://localhost:9998/echo");
+    ws.onopen = function() {
+        ws.send("give me flag and temperature and rate !");
+        console.log("give me flag and temperature and rate !");
+    };
+    ws.onmessage = function (evt) { 
+        var received_msg = evt.data;
+        var server_temperature = received_msg.temperature;
+        var server_rate = received_msg.rate;
+        var server_mist_flag = received_msg.mist_flag;
+        console.log("received_msg:" + received_msg);
+      
+    };
+    ws.onclose = function(){ 
+        //black_mist.mist_flag = true;
+        console.log("ws now is closed...");
+    };
+
     
     var header_wrapper = new Vue({
         el: '.header-wrapper',
@@ -47,7 +65,16 @@ $(document).ready(function() {
         },
     })
     
-    
+    var black_mist = new Vue({
+        el: ".black_mist",
+        data: {
+            mist_flag: mist,
+        },
+        method:{
+            
+        }
+            
+    });
     
     var true_main_div = new Vue({
         el: '.true_main_div',
