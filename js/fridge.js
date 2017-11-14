@@ -16,7 +16,7 @@ $(document).ready(function() {
     
     var socket = new SockJS('/endpoint');
     stompClient = Stomp.over(socket);
-    stompClient.connect({}, function (frame) {
+    var stomp_connect = stompClient.connect({}, function (frame) {
         console.log('Connected:' + frame);
         stompClient.subscribe('/topic/refrigerator', function (response) {
         	console.log("aaaaaa:"+response.body);
@@ -38,8 +38,22 @@ $(document).ready(function() {
             }
         	
         })
+    },error_callback());
+    
+    stompClient.heartbeat.outgoing = 5 * 60000;
+    stompClient.disconnect(function() {
+        reconnect();
     });
     
+    var error_callback = function() {
+        reconnect();
+    };
+    
+    var reconnect = function () {
+        var socket = new SockJS('/endpoint');
+        stompClient = Stomp.over(socket);
+        stomp_connect();
+    }
     // var ws = new WebSocket("ws://192.168.1.234:8080/topic/refrigerator");
 //    var ws = new WebSocket("ws://localhost:8080/topic/refrigerator");
 //    ws.onopen = function() {
