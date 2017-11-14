@@ -11,54 +11,64 @@ $(document).ready(function() {
     console.log(now_time);
     
     var ws_url = '';
-    var ws = new WebSocket("ws://localhost:60000/topic/refrigerator");
-    ws.onopen = function() {
-        heart_beat.start();
-        console.log("ws started...");
-    };
-    ws.onmessage = function (evt) { 
-        heart_beat.reset();
-        var received_msg = evt.data;
-        console.log(received_msg);
-        var operation = received_msg.operation;
-        if (operation == "TEMPERATURE") {
-            var server_temperature = received_msg.target;
-            header_wrapper.temperature = server_temperature;
-            return;
-        }
-        if (operation == "ON") {
-            black_mist.mist_flag = true;
-            return;
-        }
-        if (operation == "OFF") {
-            black_mist.mist_flag = false;
-            return;
-        }
-      
-    };
-    ws.onclose = function(){ 
-        reconnect();
-    };
-    ws.onerror = function(){ 
-        reconnect();
-    };
-    reconnect = function () {
-        console.log("ws is closed. now reconnect...");
-        ws = new WebSocket("ws://localhost:60000/topic/refrigerator");
-    }
-    var heart_beat = {
-        timeout: 5 * 60000,
-        timeout_obj: null,
-        reset: function(){
-            clearTimeout(this.timeout_obj);
-    　　　　this.start();
-        },
-        start: function(){
-            this.timeout_obj = setTimeout(function(){
-                ws.send("heart_beat");
-            }, this.timeout);
-        }
-    }
+    
+    var stompClient = null;
+    
+    var socket = new SockJS('/endpoint');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function (frame) {
+        console.log('Connected:' + frame);
+        stompClient.subscribe('/topic/refrigerator', function (response) {
+        	console.log("aaaaaa:"+response.body);
+        	var received_msg = JSON.parse( response.body);
+            console.log(received_msg);
+            var operation = received_msg.operation;
+            if (operation == "TEMPERATURE") {
+                var server_temperature = received_msg.target;
+                header_wrapper.temperature = server_temperature;
+                return;
+            }
+            if (operation == "ON") {
+                black_mist.mist_flag = true;
+                return;
+            }
+            if (operation == "OFF") {
+                black_mist.mist_flag = false;
+                return;
+            }
+        	
+        })
+    });
+    
+    // var ws = new WebSocket("ws://192.168.1.234:8080/topic/refrigerator");
+//    var ws = new WebSocket("ws://localhost:8080/topic/refrigerator");
+//    ws.onopen = function() {
+//        ws.send("give me flag and temperature and rate !");
+//        console.log("give me flag and temperature and rate !");
+//    };
+//    ws.onmessage = function (evt) { 
+//        var received_msg = evt.data;
+//        console.log(received_msg);
+//        var operation = received_msg.operation;
+//        if (operation == "TEMPERATURE") {
+//            var server_temperature = received_msg.target;
+//            header_wrapper.temperature = server_temperature;
+//            return;
+//        }
+//        if (operation == "ON") {
+//            black_mist.mist_flag = true;
+//            return;
+//        }
+//        if (operation == "OFF") {
+//            black_mist.mist_flag = false;
+//            return;
+//        }
+//      
+//    };
+//    ws.onclose = function(){ 
+//        //black_mist.mist_flag = true;
+//        console.log("ws now is closed...");
+//    };
 
     
     var header_wrapper = new Vue({
@@ -78,6 +88,7 @@ $(document).ready(function() {
             prizeList: [
                 { name: "HI， 早上好，美好的早餐会让您活力充沛一整天" },
                 { name: "更具冰箱中储存的食材，为您推荐菜单" },
+                { name: "您可在冰箱操作页面在线预订食材" },
             ],
         },
         computed: {
@@ -220,9 +231,9 @@ $(document).ready(function() {
                    skill: "炒",
                    time: "30-60分钟",
                    image_src: "images/3/图片-2.png",
-                   big_image_src: "images/3/图片-2.png",
-                   description: "菜如其名，番茄炒蛋，就是红红的番茄配上嫩黄蓬松的鸡蛋，隔上简单的配料和佐料，炒好后在撒上几粒碧绿的葱花，红亮亮黄灿灿的颜色，顿时让人食欲大开",
-                   intruction: "菜如其名，番茄炒蛋，就是红红的番茄配上嫩黄蓬松的鸡蛋，隔上简单的配料和佐料，炒好后在撒上几粒碧绿的葱花，红亮亮黄灿灿的颜色，顿时让人食欲大开",
+                   big_image_src: "images/3/20171114104403.png",
+                   description: "",
+                   intruction: "",
                 },
                 2: {
                    id: 2,
