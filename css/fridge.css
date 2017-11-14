@@ -980,6 +980,10 @@ body{
     background-size: 597px;
     background-attachment: scroll;
 }
+
+.cook_intruction_img {
+    width: 577px;
+}
 .cook_intruction_text{
     padding: 16px;
 }

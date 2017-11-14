@@ -364,8 +364,11 @@
                             <div class='text-center cart_list_detail_title'>{{cookbook_list[cookbook_id].name}}</div><div v-on:click="close_cb_v_icon" class='close_cb_v_icon'><img src='images/2/弹出1/关闭.png'/></div>
                         </div>
                         <div class='line_w'></div>
-                        <div class='cook_intruction' :style="{backgroundImage: 'url(' + cookbook_list[cookbook_id].big_image_src + ')'}">
+                        <!--<div class='cook_intruction' :style="{backgroundImage: 'url(' + cookbook_list[cookbook_id].big_image_src + ')'}">
                             <div class='cook_intruction_text'>{{cookbook_list[cookbook_id].intruction}}</div>
+                        </div>-->
+                        <div class='cook_intruction'>
+                            <img class='cook_intruction_img' v-bind:src='cookbook_list[cookbook_id].big_image_src' />
                         </div>
                     </div>
                 </div>
