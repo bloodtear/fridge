@@ -13,10 +13,11 @@ $(document).ready(function() {
     var ws_url = '';
     var ws = new WebSocket("ws://localhost:60000/topic/refrigerator");
     ws.onopen = function() {
-        ws.send("give me flag and temperature and rate !");
-        console.log("give me flag and temperature and rate !");
+        heart_beat.start();
+        console.log("ws started...");
     };
     ws.onmessage = function (evt) { 
+        heart_beat.reset();
         var received_msg = evt.data;
         console.log(received_msg);
         var operation = received_msg.operation;
@@ -36,9 +37,28 @@ $(document).ready(function() {
       
     };
     ws.onclose = function(){ 
-        //black_mist.mist_flag = true;
-        console.log("ws now is closed...");
+        reconnect();
     };
+    ws.onerror = function(){ 
+        reconnect();
+    };
+    reconnect = function () {
+        console.log("ws is closed. now reconnect...");
+        ws = new WebSocket("ws://localhost:60000/topic/refrigerator");
+    }
+    var heart_beat = {
+        timeout: 5 * 60000,
+        timeout_obj: null,
+        reset: function(){
+            clearTimeout(this.timeout_obj);
+    　　　　this.start();
+        },
+        start: function(){
+            this.timeout_obj = setTimeout(function(){
+                ws.send("heart_beat");
+            }, this.timeout);
+        }
+    }
 
     
     var header_wrapper = new Vue({
