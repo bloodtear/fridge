@@ -258,6 +258,15 @@
     </div>
 
     <div v-else-if="main_flag == 1" class=''>
+		<transition
+			name="custom-classes-transition"
+			enter-active-class="animated tada"
+			leave-active-class="animated  zoomOutDown"
+		> 
+		<div v-if="fly_show" v-bind:style="{top: fly_top + 'px', left  : fly_left + 'px'}" class='fly_item center-block'>
+			<img class='center-block good_image' v-bind:src="good_list[fly_good_id].image_src" />
+		</div>
+		</transition>
         <div class='mall_type_list box'>
             <div class='mall_type in_line_box item ' v-on:click="choose_mall_type" v-bind:class="{mall_type_choose: mall_type_id == thiz_type_id}" v-for="(mall_type, thiz_type_id) in mall_type_list" v-bind:mall_type_id='thiz_type_id' >
                 {{mall_type}}
@@ -265,7 +274,7 @@
         </div>
         <div class='good_list'>
             <div class='good_item' v-for="good_id in food_list_by_type[mall_type_id]">
-                <div class='center-block'><img class='center-block' v-bind:src="good_list[good_id].image_src" />
+                <div class='center-block'><img class='center-block good_image' v-bind:src="good_list[good_id].image_src" />
                 </div>
                 <div class='good_detail'>
                     <div class='good_price'>
@@ -281,7 +290,10 @@
                         </div>
                     </div>
                 </div>
+				
             </div>
+			
+
         </div>
         <div class='cart_div'>
             <div class='cart_status_show'>

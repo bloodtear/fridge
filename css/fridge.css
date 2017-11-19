@@ -744,6 +744,7 @@ body{
     max-height: 87px;
     vertical-align: top;
 }
+
 .nutrition_list {
     border : 1px solid;
     width: 595px;
@@ -899,6 +900,18 @@ body{
     width: 0 auto;
     max-height: 160px;
     z-index: -1;
+}
+
+.fly_item {
+	position: absolute;
+	height: 245px;
+    width: 245px;
+}
+
+.fly_item img{
+	position: relative;
+    width: 0 auto;
+    max-height: 160px;
 }
 
 .good_price {
@@ -1103,4 +1116,8 @@ body{
     background-color: white;
     position: absolute;
     top: 0;
+}
+
+.bounceOutRightDown {
+	
 }

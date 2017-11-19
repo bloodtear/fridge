@@ -12,7 +12,7 @@ $(document).ready(function() {
     
     var ws_url = '';
     
-
+	
     var stompClient = null;
     
     var socket = new SockJS('/endpoint');
@@ -55,7 +55,7 @@ $(document).ready(function() {
         stompClient = Stomp.over(socket);
         stomp_connect();
     }
-
+	
     // var ws = new WebSocket("ws://192.168.1.234:8080/topic/refrigerator");
 //    var ws = new WebSocket("ws://localhost:8080/topic/refrigerator");
 //    ws.onopen = function() {
@@ -153,6 +153,8 @@ $(document).ready(function() {
     var true_main_div = new Vue({
         el: '.true_main_div',
         data: {
+            fly_top: 0,
+            fly_left: 0,
             main_flag: 0,
             food_type: 0,
             food_id: 1,
@@ -160,6 +162,7 @@ $(document).ready(function() {
             food_page: 0,
             cook_book_view: false,
             view_cart_list_detail: false,
+            fly_show: false,
             cook_book_descrpition: "",
             view_cart_list_detail_flag: 0,
             food_page_list: {
@@ -405,8 +408,22 @@ $(document).ready(function() {
                 var target = event.currentTarget;
                 var good_id = $(target).attr("good_id");
                 console.log(good_id);
+				true_main_div.fly_good_id = good_id;
                 true_main_div.cart_good_list.push(good_id);
                 true_main_div.refresh_good_list();
+				true_main_div.fly_show = true;
+				
+				var x = $(target).parents('.good_item').offset().top; 
+				var y = $(target).parents('.good_item').offset().left; 
+				console.log(x);
+				console.log(y);
+				var fly_item = $('.fly_item');
+				console.log(fly_item);
+				true_main_div.fly_top = x;
+				true_main_div.fly_left = y;
+
+				setTimeout(function() {true_main_div.fly_show = false;}, 1000);
+
             },
             refresh_good_list: function () {
                 console.log(true_main_div.cart_good_list);
