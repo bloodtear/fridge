@@ -12,6 +12,7 @@ $(document).ready(function() {
     
     var ws_url = '';
     
+
     var stompClient = null;
     
     var socket = new SockJS('/endpoint');
@@ -54,6 +55,7 @@ $(document).ready(function() {
         stompClient = Stomp.over(socket);
         stomp_connect();
     }
+
     // var ws = new WebSocket("ws://192.168.1.234:8080/topic/refrigerator");
 //    var ws = new WebSocket("ws://localhost:8080/topic/refrigerator");
 //    ws.onopen = function() {
@@ -84,7 +86,7 @@ $(document).ready(function() {
 //        console.log("ws now is closed...");
 //    };
 
-    
+
     var header_wrapper = new Vue({
         el: '.header-wrapper',
         data: {
@@ -117,8 +119,24 @@ $(document).ready(function() {
               } else {
                 this.activeIndex = 0;
               }
+			  this.refresh_now_time();
+			  
             }, 3000);
         },
+		methods: {
+			refresh_now_time() {
+				var i = 1;
+				var timestamp = Date.parse(new Date());
+				//timestamp = timestamp / 1000;
+				var now_date = format_date(timestamp);
+				var now_time = format_time(timestamp);
+				
+				console.log(now_date);
+				console.log(now_time);
+				header_wrapper.now_time = now_time;
+				header_wrapper.now_date = now_date;
+			},
+		}
     })
     
     var black_mist = new Vue({
