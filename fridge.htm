@@ -337,8 +337,19 @@
             </div>
             <div class='' v-else-if="view_cart_list_detail_flag == 1">
                 <div class='second_total_price_intro'><span>合计金额: ￥</span>{{total_price}}</div>
-                <img class='center-block finger_icon' v-on:click="finger_click" src='images/2/弹出2/指纹图标-icon.png'/>
-                <div class='finger_intro1'>请输入您Touch ID</div>
+                <div class='center-block finger_icon' v-on:click="finger_click2" >
+                    <img class='finger_back'  src='images/2/弹出2/外框-1.png'/>
+                    <img class='finger_center'  src='images/2/弹出2/指纹.png'/>
+                    <transition
+                        name="!custom-classes-transition"
+                        enter-active-class="animated rotate_alltime"
+                        !leave-active-class="animated zoomOutDown"
+                    >
+                        <img v-if="finger_loading" class='finger_loading'  src='images/2/弹出2/外框-2.png'/>
+                    </transition>
+                </div>
+                <!--<img class='center-block finger_icon' v-on:click="finger_click" src='images/2/弹出2/指纹图标-icon.png'/>-->
+                <div class='finger_intro3'>请输入您Touch ID</div>
                 <div class='finger_intro2'>通过点按屏幕验证您的指纹</div>
             </div>
             <div class='' v-else-if="view_cart_list_detail_flag == 2">

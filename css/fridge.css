@@ -690,13 +690,29 @@ body{
     padding-right: 28px;
 }
 .finger_icon {
-    margin-top: 90px;
+    padding-top: 90px;
+    position: relative;
+}
+.finger_icon >img {
+    position: absolute;
+    top: 42px;
+    left: 296px;
+}
+.finger_center {
+    top: 54px !important;
+    left: 309px !important;
 }
 .good_detail_s {
     padding-top: 4px;
 }
 .good_detail_s .good_name{
     font-size: 14px;
+}
+.finger_intro3 {
+    margin-top: 132px;
+    font-size: 20px;
+    color: #FBBAFF;
+    text-align: center;
 }
 .finger_intro1 {
     margin-top: 42px;
@@ -1118,6 +1134,20 @@ body{
     top: 0;
 }
 
-.bounceOutRightDown {
-	
+
+
+@keyframes rotate_alltime {
+  from {
+    opacity: 0;
+    transform: rotate(720deg);;
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rotate_alltime {
+  animation-name: rotate_alltime;
 }

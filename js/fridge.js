@@ -163,6 +163,7 @@ $(document).ready(function() {
             cook_book_view: false,
             view_cart_list_detail: false,
             fly_show: false,
+            finger_loading: false,
             cook_book_descrpition: "",
             view_cart_list_detail_flag: 0,
             food_page_list: {
@@ -460,7 +461,19 @@ $(document).ready(function() {
                 true_main_div.view_cart_list_detail = true;
                 true_main_div.cart_good_list = [];
                 true_main_div.refresh_good_list();
-            }
+            },
+            finger_click2: function() {
+                true_main_div.finger_loading = true;
+                //return;
+                setTimeout(function() {
+                    true_main_div.view_cart_list_detail_flag = 2;
+                    true_main_div.view_cart_list_detail = true;
+                    true_main_div.cart_good_list = [];
+                    true_main_div.refresh_good_list();
+                    true_main_div.finger_loading = false;
+                }, 1 * 1000);
+                
+            },
         },
     });
     
