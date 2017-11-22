@@ -14,7 +14,7 @@ $(document).ready(function() {
     
 	
     var stompClient = null;
-    
+    /* 
     var socket = new SockJS('/endpoint');
     stompClient = Stomp.over(socket);
     var stomp_connect = stompClient.connect({}, function (frame) {
@@ -55,7 +55,7 @@ $(document).ready(function() {
         stompClient = Stomp.over(socket);
         stomp_connect();
     }
-	
+	 */
     // var ws = new WebSocket("ws://192.168.1.234:8080/topic/refrigerator");
 //    var ws = new WebSocket("ws://localhost:8080/topic/refrigerator");
 //    ws.onopen = function() {
